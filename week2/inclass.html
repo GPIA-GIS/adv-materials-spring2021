@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>In-class Exercises | Advanced GIS</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">&larr; Advanced GIS</a>
+                <h1>In-class Exercises</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: CartoCSS</h2>
+                <ol>
+                    <li>Download <a href="data/week2data.zip">today's data</a>.</li>
+                    <li>Open the <a href="https://carto.com/developers/styling/cartocss/">CartoCSS documentation</a>.</li>
+                    <li>Zip and upload the files within <strong>fires-sa-viirs</strong> data to Carto. This was downloaded on January 25, 2021 from <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/viirs-i-band-active-fire-data">NASA EarthData</a>.</li>
+                    <li>Make a map with the fire data and style the points with no aggregation (under <strong>Style &gt; Aggregation</strong>, <strong>Points</strong> should be selected).</li>
+                    <li>Using CartoCSS:
+                        <ol>
+                            <li>Make the markers 5 pixels wide.</li>
+                            <li>Give the markers an outline 2 pixels wide.</li>
+                            <li>Give the fill and stroke of the markers different colors.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: CartoCSS Zoom Conditions</h2>
+                <ol>
+                    <li>Make your markers 5 pixels wide by default.</li>
+                    <li>When the zoom level is 8 or more, make the markers 10 pixels wide.</li>
+                    <li>When the zoom level is 12 or more, make the markers 15 pixels wide.</li>
+                    <li>If you have time, change some other properties by zoom level.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: CartoCSS Attribute Conditions</h2>
+                <ol>
+                    <li>Make your markers a different color when the column <code>bright_ti4</code> is over <code>350</code>.</li>
+                    <li>Remove the code for the previous step and make your markers different colors based on the value of the <code>daynight</code> column.</li>
+                    <li>If you have time, make some more styling changes based on the attributes in the data.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 4: CartoCSS ramps</h2>
+                <ol>
+                    <li>Use ramps to make the marker fill use <code>jenks</code>, the <code>bright_ti4</code> column, and the green-to-blue colorbrewer ramp:
+                        <pre><code>marker-fill: ramp([bright_ti4], colorbrewer(GnBu), jenks);</code></pre>
+                    </li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Advanced GIS</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>

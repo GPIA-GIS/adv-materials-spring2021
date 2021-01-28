@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 2 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 2</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/readings-lat.png);">
+            <a class="source" href="https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/readings-risk.png);">
+            <a class="source" href="https://covid19risk.biosci.gatech.edu/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/readings-maplab.png);">
+            <a class="source" href="https://www.bloomberg.com/news/newsletters/2021-01-13/maplab-maps-don-t-persuade-people-to-wear-a-mask">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/assignment-gulsum.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/dogange/builder/88485e6e-e445-4872-937a-1fef805d9f41/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.45948689837198%2C-74.43511962890626%5D%2C%22sw%22%3A%5B40.94930679753841%2C-73.41339111328126%5D%2C%22center%22%3A%5B40.70484714530104%2C-73.92425537109376%5D%2C%22zoom%22%3A11%7D%7D">Gulsum</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-kritika.png);">
+            <a class="source" href="https://shark132.carto.com/builder/981bf1d6-f898-40f4-81de-63e003762ab9/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B-48.2246726495652%2C-124.98046875000001%5D%2C%22sw%22%3A%5B73.37821477939463%2C136.58203125000003%5D%2C%22center%22%3A%5B26.509904531413927%2C5.800781250000001%5D%2C%22zoom%22%3A3%7D%2C%22widgets%22%3A%7B%22c58664a0-55b1-4028-a692-d5c668e3d3b0%22%3A%7B%22acceptedCategories%22%3A%5B%22Gas%22%2C%22Hydro%22%2C%22Wind%22%2C%22Solar%22%5D%7D%7D%7D">Kritika</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>Next week: final project thoughts</h2>
+        </div>
+
+        <div class="slide">
+            <h2>tell me about:</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Something you would like to work on as your final project.</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Past work you're excited about that might be a good interactive map.</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Projects that you might like to emulate.</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Thoughts about webmaps—what inspires you about them?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Map-related skills that you would like to acquire.</h2>
+        </div>
+
+        <div class="slide">
+            <h2>We will talk about these briefly next week.</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto.png);">
+            <a class="source" href="https://carto.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartodb-project.png);">
+            <a class="source" href="https://github.com/CartoDB/cartodb">github.com/CartoDB/cartodb</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-pricing.png);">
+            <a class="source" href="https://carto.com/pricing/">carto.com/pricing</a>
+        </div>
+
+        <div class="slide">
+            <h2>Who uses Carto?</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-amnh.png);">
+            <a class="source" style="margin-right: 400px;" href="https://carto.com/blog/mapping-solomon-islands">Mapping the Historical Biodiversity of the Solomon Islands...</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-toxicity-map.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/curb-your-litter.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mpg-raptors.png);">
+            <a class="source" href="https://raptortracker.mpgranch.com/">Raptor Tracker</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+            <h2>Carto can make every part of your web map if you want it to</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-3.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-3.jpg);">
+            <h2>Or you can do all of this on your own and ask Carto to just host our data</h2>
+        </div>
+
+        <div class="slide">
+            <h2>Both approaches can be useful</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+            <h2>We'll start with letting Carto do everything for us</h2>
+        </div>
+
+        <div class="slide">
+            <h2>datasets</h2>
+            <p>where you <strong>import</strong>, <strong>edit</strong>, and <strong>analyze</strong> your data</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-datasets.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-new-dataset.png);">
+        </div>
+
+        <div class="slide">
+            <p>you can upload:</p>
+            <ul style="margin-left: 100px;">
+                <li>csv</li>
+                <li>shapefiles (<strong>zipped</strong>)</li>
+                <li>kml</li>
+                <li>geojson</li>
+                <li>(and some others)</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>maps</h2>
+            <p>where you make <strong>public map views</strong> of your datasets</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-styles-categorized.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-styles-categorized.png);">
+            <h2>categorized</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-styles-graduated.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-styles-graduated.png);">
+            <h2>graduated</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-attribute-table-button.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-attribute-table.png);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/zoom.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/pan.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/popup.gif);">
+        </div>
+
+        <div class="slide">
+            <h2>let's talk about making features look different based on the zoom level</h2>
+        </div>
+
+        <div class="slide">
+            <h2>or "zoom-dependent styles"</h2>
+        </div>
+
+        <div class="slide">
+            <h2>this will take some code...</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CartoCSS</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you don't need to memorize any of this</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-reference.png);">
+            <a class="source" href="materials/cartocss-reference.pdf">cartocss reference</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-video.png);">
+            <h2>watch the <a href="https://www.youtube.com/watch?v=pOT5rdyp4N0">video</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-documentation.png);">
+            <h2>use the <a href="https://carto.com/developers/styling/cartocss/">documentation</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-github.png);">
+            <a class="source" href="https://github.com/mapbox/carto">(open source)</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/osm.png);">
+        </div>
+
+        <div class="slide">
+            <h2>why?</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-styling.png);">
+        </div>
+
+        <div class="slide">
+            <h2>you can share it</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can share it</h2>
+            <p>(it's just text)</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-osm.png);">
+            <a class="source" href="https://github.com/gravitystorm/openstreetmap-carto">
+                source
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-osm-detail.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-5.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-5.png);">
+          <h2>it will give us more control over our map data</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CartoCSS</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CartoCSS</h2>
+            <p>Looks similar to but is otherwise completely separate from <em>CSS</em>.</p>
+        </div>
+
+        <div class="slide">
+            <h2>CartoCSS</h2>
+            <p>Looks similar to but is otherwise completely separate from <em>CSS</em>.</p>
+            <p>CSS adds style (font styles, color) to webpages, CartoCSS does the same for maps.</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-car.jpg);">
+            <a class="source" href="http://www.flickr.com/photos/mrstaticvoid/4307191115/">
+                mrstaticvoid on flickr
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-airplane.jpg);">
+            <a class="source" href="http://www.flickr.com/photos/niklasstjerna/6636973889/">
+                niklasstjerna on flickr
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-airplane-markers.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-airplane-polygons.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-airplane-lines.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/dashboard-airplane-qqq.jpg);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+    marker-fill: #ff307a;
+    marker-line-color: #FFF;
+    marker-line-width: 0.25;
+    marker-line-opacity: 0.4;
+    marker-width: 2;
+    marker-allow-overlap: true;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>this is a <em>statement</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>this is a <em>statement</em></h2>
+            <pre class="prettyprint" style="font-size: 44px; line-height: 44px;"><code>#layer {
+    marker-fill: #ff307a;
+    marker-line-color: #FFF;
+    marker-line-width: 0.25;
+    marker-line-opacity: 0.4;
+    marker-width: 2;
+    marker-allow-overlap: true;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>statements start with a <em>selector</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>statements start with a <em>selector</em></h2>
+            <pre class="prettyprint"><code>#layer</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>always put a <em>{</em> after the selector</h2>
+        </div>
+
+        <div class="slide">
+            <h2>always put a <em>{</em> after the selector</h2>
+            <pre class="prettyprint"><code>#layer {</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and always always remember to close it with <em>}</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>and always always remember to close it with <em>}</em></h2>
+            <pre class="prettyprint"><code>#layer {
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and always always remember to close it with <em>}</em></h2>
+            <pre class="prettyprint"><code>#layer {
+}</code></pre>
+            <p>otherwise your statement will never end!</p>
+        </div>
+
+        <div class="slide">
+            <h2>between <em>{</em> <em>}</em>, set your properties</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/curly-brace-bookends.jpg);">
+            <h2>think of the <em>{</em> <em>}</em> as bookends</h2>
+            <a class="source" href="https://www.etsy.com/listing/121433089/unique-metal-bookends-brackets-black">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>what is a <em>property</em>?</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-documentation.png);">
+            <h2>they're defined in the <a href="https://carto.com/developers/styling/cartocss/">documentation</a> for CartoCSS</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+}</code></pre>
+            <p>always one per line, each line ending with a <strong>;</strong></p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+}</code></pre>
+            <h2>separate the property name and the value by a <em>:</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>property values will often be <em>color strings</em>, <em>numbers</em>, or <em>true/false</em></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-documentation.png);">
+            <h2>check the <a href="https://carto.com/developers/styling/cartocss/">documentation</a> if you have any doubts</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+}
+marker-width: 5;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+}
+marker-width: 5;</code></pre>
+            <h2>don't do this!</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+}
+<span class="highlighted">marker-width: 5;</span></code></pre>
+            <h2>this line won't do anything</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-outline.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-outline.png);">
+            <h2>Carto often splits polygon fill and outline into two statements</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  polygon-fill: #826DBA;
+  polygon-opacity: 0.9;
+}
+#layer::outline {
+  line-width: 1;
+  line-color: #FFFFFF;
+  line-opacity: 0.5;
+}</code></pre>
+        </div>
+
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-fill: #ff307a;
+  marker-line-color: #FFF;
+  marker-line-width: 0.25;
+  marker-line-opacity: 0.4;
+  marker-width: 2;
+  marker-allow-overlap: true;
+}</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>let's vary some properties by <em>zoom level</em></h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-width: 3;
+
+  [zoom &gt;= 10] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>let's call these <em>conditional statements</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2><em>conditional statements</em> are only used if some condition is met</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px; line-height: 50px;"><code>#layer {
+  marker-width: 3;
+
+  [zoom &gt;= 10] {
+    marker-width: 8;
+  }
+}</code></pre>
+            <p>"make the markers 3 pixels wide. if the map is at zoom level 10 or higher, make the markers 8 pixels wide."</p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer {
+  marker-width: 3;
+
+  [zoom &gt;= 10] {
+    marker-width: 8;
+  }
+  [zoom &gt;= 16] {
+    marker-width: 13;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/llnyc-points-0.png);">
+            <a class="source" href="https://livinglotsnyc.org/#16/40.7077/-73.8573">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/llnyc-points-1.png);">
+            <a class="source" href="https://livinglotsnyc.org/#16/40.7077/-73.8573">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/llnyc-points-1.png);">
+            <h2>small polygons tend not to appear well when zoomed out</h2>
+            <a class="source" href="https://livinglotsnyc.org/#16/40.7077/-73.8573">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/llnyc-points-1.png);">
+            <h2>so consider showing points when zoomed out, polygons when zoomed in</h2>
+            <a class="source" href="https://livinglotsnyc.org/#16/40.7077/-73.8573">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-centroids.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-polygons.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-polygons.png);">
+          <h2>usually I do this with two separate layers</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-labels.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-labels.png);">
+            <h2>You might use this to conditionally hide labels</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer[zoom &lt; 10] {
+  marker-fill: blue;
+  marker-allow-overlap: true;
+  marker-width: 10;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer[zoom &lt; 10] {
+  marker-fill: blue;
+  marker-allow-overlap: true;
+  marker-width: 10;
+}</code></pre>
+            <h2>what do you think this does?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer[zoom &lt; 10] {
+  marker-fill: blue;
+  marker-allow-overlap: true;
+  marker-width: 10;
+}</code></pre>
+            <h2>only shows the layer when zoom is less than 10</h2>
+        </div>
+
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>that's not all!</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can change styles based on a feature's attributes</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-attribute.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-width: 3;
+
+  [bright_ti4 &gt;= 350] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>look familiar?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>let's call these <em>attribute-dependent styles</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>conditional statements on text? wrap the text in quotation marks</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 70px;"><code>#layer {
+  marker-width: 3;
+
+  [confidence = 'low'] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 3</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>you don't have to memorize all of this</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-reference.png);">
+            <a class="source" href="materials/cartocss-reference.pdf">cartocss reference</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-video.png);">
+            <h2>watch the <a href="https://www.youtube.com/watch?v=pOT5rdyp4N0">video</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-documentation.png);">
+            <h2>use the <a href="https://carto.com/developers/styling/cartocss/">documentation</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>experiment with Carto's built-in styles, see the code they produce</h2>
+        </div>
+
+        <div class="slide">
+            <h2>read other people's CartoCSS</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cartocss-hdm.png);">
+            <a class="source" href="https://github.com/hotosm/hdm-cartocss">
+                source
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/toner-github.png);">
+            <a class="source" href="https://github.com/stamen/toner-carto/">
+                source
+            </a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>combine conditions to set properties with <em>both</em> conditions</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 70px;"><code>#layer {
+  marker-width: 3;
+
+  [bright_ti4 &gt; 350][confidence = 'low'] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 70px;"><code>#layer {
+  marker-width: 3;
+
+  [bright_ti4 &gt; 350][confidence = 'low'] {
+    marker-width: 8;
+  }
+}</code></pre>
+            <p>make markers where bright_ti4 is greater than 350 <em>and</em> location = "low" larger</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-attribute-combined.png);">
+        </div>
+
+        <div class="slide">
+            <h2>recap</h2>
+        </div>
+
+        <div class="slide">
+            <h2>conditional statements look like</h2>
+            <pre><code>[bright_ti4 &gt;= 350] {
+
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>restrict statements more by putting conditions next to each other</h2>
+        </div>
+
+        <div class="slide">
+            <pre><code>[bright_ti4 &gt;= 300][bright_ti4 &lt; 350] {
+
+}</code></pre>
+            <p><em>both</em> conditions must be true</p>
+        </div>
+
+        <div class="slide">
+            <h2>you can use as many of these as you need to</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer {
+  [bright_ti4 &gt;= 7] {
+
+  }
+  [zoom &gt;= 11] {
+
+  }
+  [zoom &gt;= 12] {
+
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/carto-ramps.png);">
+            <h2>ramps</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-ramps.png);">
+            <h2>shorthand for classifying a column's values and giving each a color</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer {
+  marker-width: 3;
+  marker-fill: ramp([bright_ti4], (#fbe6c5,
+    #f2a28a, #dc7176, #b24b65, #70284a), jenks);
+  marker-fill-opacity: 1;
+  marker-allow-overlap: true;
+  marker-line-width: 1;
+  marker-line-color: #FFFFFF;
+  marker-line-opacity: 1;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>
+  marker-fill: ramp([bright_ti4], (#fbe6c5,
+    #f2a28a, #dc7176, #b24b65, #70284a), jenks);
+</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/turbo-carto.png);">
+            <a href="https://carto.com/blog/styling-with-turbo-carto/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/turbo-carto.png);">
+            <h2>you can use <a href="http://colorbrewer2.org/">colorbrewer</a> ramps here</h2>
+            <a href="https://carto.com/blog/styling-with-turbo-carto/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-colors.png);">
+            <a href="https://carto.com/carto-colors/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-colors.png);">
+            <h2>or copy from carto colors</h2>
+            <a href="https://carto.com/carto-colors/" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 4</a></h2>
+        </div>
+
+    </body>
+</html>
