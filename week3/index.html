@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 3 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 3</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 3</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-brooke.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/pascb416/builder/0c8e4cb3-91c7-4faa-bfc8-ccc9c7fd5827/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.48664852056083%2C-74.50653076171876%5D%2C%22sw%22%3A%5B40.976269338089836%2C-73.23760986328126%5D%2C%22center%22%3A%5B40.73190929073145%2C-73.87207031250001%5D%2C%22zoom%22%3A11%7D%7D">Brooke</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-daniel.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/chuc873/builder/6b68a899-b329-415e-9182-dcd3480cc29d/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.48403730355464%2C-74.47975158691408%5D%2C%22sw%22%3A%5B40.97367726477833%2C-73.21083068847658%5D%2C%22center%22%3A%5B40.72930763943155%2C-73.84529113769533%5D%2C%22zoom%22%3A11%7D%7D">Daniel</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-daniel-code.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/chuc873/builder/6b68a899-b329-415e-9182-dcd3480cc29d/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.48403730355464%2C-74.47975158691408%5D%2C%22sw%22%3A%5B40.97367726477833%2C-73.21083068847658%5D%2C%22center%22%3A%5B40.72930763943155%2C-73.84529113769533%5D%2C%22zoom%22%3A11%7D%7D">Daniel</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-daniel-code1.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/chuc873/builder/6b68a899-b329-415e-9182-dcd3480cc29d/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.48403730355464%2C-74.47975158691408%5D%2C%22sw%22%3A%5B40.97367726477833%2C-73.21083068847658%5D%2C%22center%22%3A%5B40.72930763943155%2C-73.84529113769533%5D%2C%22zoom%22%3A11%7D%7D">Daniel</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>CartoCSS?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CartoCSS looks like CSS, but they're two different things</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-width: 3;
+
+  [zoom &gt;= 10] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+
+        <div class="slide">
+            <pre class="prettyprint"><code>#layer {
+  marker-width: 3;
+
+  [bright_ti4 &gt;= 350] {
+    marker-width: 8;
+  }
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>#layer[zoom &lt; 10] {
+  marker-fill: blue;
+  marker-allow-overlap: true;
+  marker-width: 10;
+}</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+          <h2>final project thoughts</h2>
+        </div>
+
+        <div class="slide">
+          <h2>project proposals will be due Feb 24</h2>
+        </div>
+
+        <div class="slide">
+          <h2>I will be responding to your thoughts in Canvas</h2>
+        </div>
+
+        <div class="slide">
+          <h2>please get in touch if you would like to talk over your idea</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/carto-analyses.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-analyses.png);">
+            <h2>analysis</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-analyses.png);">
+            <h2>in many cases, these are shortcuts for things you'll do in a GIS</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-2.png);">
+            <h2>geocoding</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-3.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-3.png);">
+            <h2>buffer</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-4.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis-4.png);">
+            <h2>convex hull</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis.gif);">
+            <h2>some take a long time or won't work at all</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/analysis.gif);">
+            <h2>some are only available if you pay for credits</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-analysis-chain.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-analysis-chain.png);">
+            <h2>you can chain analyses</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-analysis-chain.png);">
+            <h2>for example, to combine filters</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>SQL</h2>
+        </div>
+
+        <div class="slide">
+            <h2>SQL</h2>
+            <h2>Structured Query Language</h2>
+        </div>
+
+        <div class="slide">
+            <h2>SQL</h2>
+            <h2>the language databases understand</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you'll use SQL in two ways:</h2>
+        </div>
+
+        <div class="slide">
+            <h2>1. pulling data out of the database</h2>
+        </div>
+
+        <div class="slide">
+            <h2>2. changing the data in the database</h2>
+        </div>
+
+        <div class="slide">
+            <img style="float: left; max-width: 50%;" src="img/paper.jpg" />
+        </div>
+
+        <div class="slide">
+            <img style="float: left; max-width: 50%;" src="img/paper.jpg" />
+            <div style="float: left; width: 50%;">
+                <div style="margin-left: 25px;">
+                    <p>Give me the pages that refer to properties in Brooklyn.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img style="float: left; max-width: 50%;" src="img/paper.jpg" />
+            <div style="float: left; width: 50%;">
+                <div style="margin-left: 25px;">
+                    <p>Give me the addresses of the properties in Brooklyn.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img style="float: left; max-width: 50%;" src="img/paper.jpg" />
+            <div style="float: left; width: 50%;">
+                <div style="margin-left: 25px;">
+                    <p>Give me the addresses of the properties in Brooklyn that have been built on since 1950.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>databases are great at these types of questions</h2>
+        </div>
+
+        <div class="slide">
+            <h2>it's what they were made for</h2>
+        </div>
+
+        <div class="slide">
+            <h2>SQL helps you ask these questions in a way databases understand</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/grand-download.png);">
+            <a class="source" href="https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/data-download">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-table.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><code>SELECT</code>: choose columns from a table</h2>
+        </div>
+
+        <div class="slide">
+            <h2><code>SELECT *</code>: choose <em>all</em> columns</h2>
+        </div>
+
+        <div class="slide">
+            <p>if you only want a few columns, list them. for example:</p>
+            <pre class="prettyprint"><code>SELECT dam_name, river
+FROM dams</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE cap_mcm &gt; 600</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><code>WHERE</code>: choose rows from a table</h2>
+        </div>
+
+        <div class="slide">
+            <p>these conditions are the same as the ones in CartoCSS:</p>
+            <pre class="prettyprint" style="margin-left: 250px;"><code>&gt;
+&lt;
+=
+!=
+&gt;=
+&lt;=</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and you combine them with <code>AND</code> / <code>OR</code></h2>
+        </div>
+
+        <div class="slide">
+            <p>for example:</p>
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE cap_mcm > 600 AND main_use = 'Irrigation'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>how would do you get just the dams in Australia or New Zealand?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE country = 'Australia'
+  OR country = 'New Zealand'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>or you can negate a condition with <code>NOT</code></h2>
+        </div>
+
+        <div class="slide">
+            <p>for example:</p>
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE NOT (
+  country = 'Australia' OR
+  country = 'New Zealand'
+)</code></pre>
+        </div>
+
+        <div class="slide">
+            <img style="width: 50%;" src="img/arc-query-builder.png" />
+        </div>
+
+        <div class="slide">
+            <img style="width: 50%; margin-top: 10%;" src="img/arc-query-builder-zoom.png" />
+        </div>
+
+        <div class="slide">
+            <h2><code>SELECT</code> does not change the table, it only changes your view of the table</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/playdoh-pasta.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/playdoh-smoosh.jpg);">
+        </div>
+
+        <div class="slide">
+            <h2>you can also use <code>SELECT</code> to get a better idea of what data is in your table</h2>
+        </div>
+
+        <div class="slide">
+            <p>count matching rows:</p>
+            <pre class="prettyprint"><code>SELECT COUNT(*)
+FROM dams</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT COUNT(*)
+FROM dams
+WHERE country = 'Turkey'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>but you'll almost never want to use this statement for your map</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-nogeom.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+        </div>
+
+        <div class="slide">
+            <h2 style="text-decoration: line-through;">1. pulling data out of the database</h2>
+            <h2>2. changing the data in the database</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can also use SQL to quickly <code>UPDATE</code> or <code>DELETE</code> the data in your table</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>UPDATE dams
+SET quality_display = 'verified'
+WHERE quality = '1: Verified'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>these <em>will</em> change or destroy data, so have a backup or test it with a table you don't need</h2>
+        </div>
+
+        <div class="slide">
+            <h2>this is one way to customize the way data is displayed in your pop-ups</h2>
+        </div>
+
+        <div class="slide">
+            <h2>first, create a new column on your table</h2>
+        </div>
+
+        <div class="slide">
+            <h2>then put the desired data in that column, based on some condition</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>UPDATE dams
+SET quality_display = 'good'
+WHERE quality = '2: Good'</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>DELETE FROM dams
+WHERE ...</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 3</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>more in the SQL reference</h2>
+        </div>
+
+        <div class="slide">
+            <h2>SQL is the standard language for all databases</h2>
+        </div>
+
+        <div class="slide">
+            <h2>SQL shows up everywhere online</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/airbnb.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/airbnb-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/airbnb-2.png);">
+            <pre class="prettyprint" style="margin-top: 75px; background: rgba(255, 255, 255, 0.9); padding: 10px; display: inline-block;"><code>SELECT *
+FROM rooms
+WHERE id = '4789513'</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/sql-widget.png);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+            <h2>Carto uses a system called <em>PostGIS</em></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+            <h2>this lets you do more GIS-like things with SQL</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *, ST_area(the_geom)
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-docs.png);">
+            <a class="source" href="https://postgis.net/docs/manual-2.5/ST_Area.html">source</a>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(the_geom::geography)
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(the_geom::geography)
+FROM boundary</code></pre>
+            <h2>calculate area in square meters</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(ST_transform(the_geom, 2263))
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(ST_transform(the_geom, 2263))
+FROM boundary</code></pre>
+            <h2>(reproject to EPSG:2263, then calculate the area)</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE ST_DWithin(
+  the_geom::geography,
+  cdb_latlng(40.735, -73.994)::geography,
+  100000
+)</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE ST_DWithin(
+  the_geom::geography,
+  cdb_latlng(40.735, -73.994)::geography,
+  100000
+)</code></pre>
+            <h2>select features within 100 kilometers</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/sql-dwithin-output.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/other-projections.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT cartodb_id,
+  ST_Transform(the_geom, 3573)
+    AS the_geom_webmercator
+FROM my_table</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/linked-in-learning-0.png);">
+            <a href="https://www.linkedin.com/learning/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/linked-in-learning-1.png);">
+            <a href="https://www.linkedin.com/learning/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/linked-in-learning-sql-1.png);">
+            <a href="https://www.linkedin.com/learning/sql-essential-training-3/understanding-sql?u=75880858" class="source">source</a>
+        </div>
+
+    </body>
+</html>

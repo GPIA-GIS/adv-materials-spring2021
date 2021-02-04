@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>In-class Exercises | Advanced GIS</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">&larr; Advanced GIS</a>
+                <h1>In-class Exercises</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: Analysis</h2>
+                <ol>
+                    <li>Download <a href="data/week3data.zip">today's data</a>. It contains a SHP of global dams and reservoirs collected by numerous groups. The data is available <a href="https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/data-download">here</a>.</li>
+                    <li>Upload <strong>week3data.zip</strong> to your Carto account.</li>
+                    <li>Also unzip <strong>week3data.zip</strong> on your computer and open the PDF of metadata.</li>
+                    <li>Create a Carto map with the dams.</li>
+                    <li>Filter the data using the <strong>Filter by column value</strong> analysis. For example, show only dams where <strong>main_use</strong> is <strong>Irrigation</strong>.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: Selecting data with SQL</h2>
+                <ol>
+                    <li>Open the <a href="materials/sql-cheatsheet.pdf" target="_blank">SQL cheatsheet</a>.</li>
+                    <li>Open the dams dataset&mdash;not as a map.</li>
+                    <li>Execute a few SQL queries using the patterns outlined in the cheatsheet to answer these questions:
+                        <ul>
+                            <li>How many dams are there?</li>
+                            <li>Which dams are in Japan?</li>
+                            <li>How many dams are mainly used for irrigation?</li>
+                            <li>How many dams were built before 1800?</li>
+                        </ul>
+                        It's good practice to keep track of the queries you run in a text file.
+                    </li>
+                    <li>Which of the above work in the map <strong>preview</strong>, too?</li>
+                    <li>Try forming a question of your own and answering it with SQL.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: Updating data with SQL</h2>
+                <ol>
+                    <li>Open the dams dataset.</li>
+                    <li>Add a new column, name it <code>quality_display</code>, and make it a string field.</li>
+                    <li>Put a more readable value in our new column based on the <code>quality</code> column. For example:
+                        <pre>
+UPDATE dams
+SET quality_display = 'verified'
+WHERE quality = '1: Verified'</pre>
+                    </li>
+                    <li>
+                        After running the above SQL, clear the SQL box and run the following:
+                        <pre>
+UPDATE dams
+SET quality_display = 'good'
+WHERE quality = '2: Good'</pre>
+                    </li>
+                    <li>Continue with the above step for the other <code>quality</code> values: <code>3: Fair</code>, <code>4: Poor</code>, <code>5: Unreliable</code>.</li>
+                    <li>Create a map with the dataset and include the new column in the popups.</li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Advanced GIS</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>
