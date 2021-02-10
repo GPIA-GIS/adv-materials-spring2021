@@ -1,0 +1,899 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Class 4 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans" rel="stylesheet" type="text/css">
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 4</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 4</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/compstat.png);">
+            <a class="source" href="https://compstat.nypdonline.org/2e5c3f4b-85c1-4635-83c6-22b27fe7c75c/view/89">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/policing-information-business.png);">
+            <a class="source" href="https://urbanomnibus.net/2018/06/policing-is-an-information-business/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/readings-white-collar-crime-risk-zones.png);">
+            <a class="source" href="https://whitecollar.thenewinquiry.com">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/readings-white-collar-crime-risk-zones-fastco.png);">
+            <a class="source" href="https://www.fastcompany.com/90111752/proof-that-algorithms-pick-up-our-biases-in-a-single-map">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/readings-white-collar-crime-risk-zones-fastco-1.png);">
+            <a class="source" href="https://www.fastcompany.com/90111752/proof-that-algorithms-pick-up-our-biases-in-a-single-map">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/assignment-sarah.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/sarahannay/builder/dc5cb8b9-210e-40ee-9518-c1ca7cd40d3c/embed>https://thenewschool.carto.com/u/sarahannay/builder/dc5cb8b9-210e-40ee-9518-c1ca7cd40d3c/embed">Sarah</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-majid.png);">
+            <a class="source" href="https://thenewschool.carto.com/u/hassabum/builder/7127a353-e77c-409d-b5ef-b3ea0a465436/embed">Majid</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-gulsum.png);">
+            <a class="source">Gulsum</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+            <h2>Carto uses a system called <em>PostGIS</em></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-logo.png); background-size: 60%;">
+            <h2>this lets you do more GIS-like things with SQL</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *, ST_area(the_geom)
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis-docs.png);">
+            <a class="source" href="https://postgis.net/docs/manual-2.5/ST_Area.html">source</a>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(the_geom::geography)
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(the_geom::geography)
+FROM boundary</code></pre>
+            <h2>calculate area in square meters</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(ST_transform(the_geom, 2263))
+FROM boundary</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *,
+  ST_area(ST_transform(the_geom, 2263))
+FROM boundary</code></pre>
+            <h2>(reproject to EPSG:2263, then calculate the area)</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE ST_DWithin(
+  the_geom::geography,
+  cdb_latlng(40.735, -73.994)::geography,
+  100000
+)</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT *
+FROM dams
+WHERE ST_DWithin(
+  the_geom::geography,
+  cdb_latlng(40.735, -73.994)::geography,
+  100000
+)</code></pre>
+            <h2>select features within 100 kilometers</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/sql-dwithin-output.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/other-projections.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT cartodb_id,
+  ST_Transform(the_geom, 3573)
+    AS the_geom_webmercator
+FROM my_table</code></pre>
+        </div>
+
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/urban-reviewer.png);">
+            <a class="source" href="http://www.urbanreviewer.org/#map=12/40.7400/-74.0286&sidebar=plans">Urban Reviewer</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/web-map-anatomy-4.jpg);">
+        </div>
+
+        <div class="slide">
+            <h2>HTML</h2>
+            <p>defines the <strong>structure</strong> and <strong>content</strong> of a page, loads other bits</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/html.png);">
+            <h2>HTML</h2>
+        </div>
+
+        <div class="slide">
+            <h2>HTML does not make nice-looking web pages on its own</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CSS will help us with that (next week!)</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CSS</h2>
+            <p>adds <strong>style</strong> to parts of a page</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/css.png);">
+            <h2>CSS</h2>
+        </div>
+
+        <div class="slide">
+            <h2>JavaScript</h2>
+            <p>makes web pages <strong>dynamic</strong> (eg AJAX)</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/ajax_grounded.gif);">
+            <h2>JavaScript</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/ajax_foursquare.gif);">
+            <h2>JavaScript</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/js.png);">
+            <h2>JavaScript</h2>
+        </div>
+
+        <div class="slide">
+            <p>your browser loads the <strong>HTML</strong>, which tells it which <strong>CSS</strong> and <strong>JavaScript</strong> files to get (if any)</p>
+        </div>
+
+        <div class="slide">
+            <h2>if you want something to be online, it has to be on a server somewhere</h2>
+        </div>
+
+        <div class="slide">
+            <h2>(it needs a URL that starts with <em>http</em> or <em>https</em>)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/neocities.png);">
+            <h2>neocities.org</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2 style="margin-top: 350px;">pages.github.com</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch.png);">
+            <h2>glitch</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>uploading images</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-assets.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-assets-url.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide">
+            <h1>HTML</h1>
+            <h2>HyperText Markup Language</h2>
+        </div>
+
+        <div class="slide">
+            <h1>HTML</h1>
+            <h2>HyperText Markup Language</h2>
+            <h2>(text with links)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/arpanet-1.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/arpanet-2.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/arpanet-3.jpg);">
+            <a href="http://www.vox.com/a/internet-maps" class="source">vox</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/gopher.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/gopherSelect.gif);">
+            <a href="http://web.stanford.edu/group/ritspub/Documents/MacTools/gopher.html" class="source">Stanford</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/berners_lee.jpg);">
+            <h2 style="position: absolute; bottom: 100px; left: 25px;">
+                <a href="http://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim Berners-Lee</a>
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/html_rfc1.png);">
+            <h2 style="margin-top: 25%;">
+                <a href="http://www.w3.org/MarkUp/draft-ietf-iiir-html-01.txt">
+                    The original RFC (standard) for HTML
+                </a>
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/html_rfc2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/berners-lee-web-developer.png);">
+            <a class="source" href="https://twitter.com/MSalt69/status/476684833221926912/photo/1">
+                twitter
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mosaic.jpg);">
+            <h2>
+                Mosaic, initially released in 1993
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mosaic_plaque.jpg);">
+            <h2>
+                <a href="http://en.wikipedia.org/wiki/Mosaic_(web_browser)">Mosaic</a>
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/netscape.gif);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>HTML defines the <em>content</em> of web pages</h2>
+        </div>
+
+        <div class="slide">
+            <h2>HTML tells the browser what to put on the page</h2>
+        </div>
+
+        <div class="slide">
+            <h2>HTML isn't going to help you make things look nice</h2>
+        </div>
+
+        <div class="slide">
+            <h2>HTML isn't going to help you make things look nice</h2>
+            <p>(we'll talk about <strong>CSS</strong> soon)</p>
+        </div>
+
+        <div class="slide">
+            <h2>every HTML page starts out the same way:</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">Content to show on the</span>
+        <span class="highlighted">page goes here!</span>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;body&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;body&gt;</code></pre>
+            <p>
+                the body <strong>opening tag</strong>
+            </p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;body&gt;</code></pre>
+            <p>
+                the body <strong>opening tag</strong>
+            </p>
+            <p>
+                opening tags always start with
+            </p>
+            <code>&lt;</code>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;body&gt;</code></pre>
+            <p>
+                the body <strong>opening tag</strong>
+            </p>
+            <p>
+                opening tags always start with
+            </p>
+            <code>&lt;</code>
+            <p>and end with</p>
+            <code>&gt;</code>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;/body&gt;</code></pre>
+            <p>the body <strong>closing tag</strong></p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;/body&gt;</code></pre>
+            <p>the body <strong>closing tag</strong></p>
+            <p>closing tags always start with</p>
+            <code>&lt;/</code>
+            <p>and end with</p>
+            <code>&gt;</code>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>let's make an html file</h2>
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            Text goes here
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;p&gt;
+    Text goes &lt;em&gt;here&lt;/em&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;p&gt;
+    Text goes &lt;strong&gt;here&lt;/strong&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;a&gt;
+    This should be a link
+&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px;"><code>&lt;a href="<span class="highlighted">http://example.com/awesome/page</span>"&gt;
+    This should be a link
+&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;img src="" /&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 3</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-copy-iframe.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px;"><code>&lt;iframe width="100%" height="520" frameborder="0"
+src="https://thenewschool.carto.com/u/brelsfoeagain/
+builder/fd0fea4a-ee46-11e6-8c31-0ecd1babdde5/embed"
+allowfullscreen webkitallowfullscreen mozallowfullscreen
+oallowfullscreen msallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><code>iframe</code></h2>
+        </div>
+
+        <div class="slide">
+            <h2><code>iframe</code></h2>
+            <h2>lets you embed other pages in your page</h2>
+        </div>
+
+        <div class="slide">
+            <h2>let's add a Carto map to our html file</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 4</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>Looking at other people's pages</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/view_source.png); background-size: 35%;">
+            <h2>view source</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/developer-tools.png);">
+            <h2>developer tools</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;ul&gt;
+    &lt;li&gt;eggs&lt;/li&gt;
+    &lt;li&gt;milk&lt;/li&gt;
+    &lt;li&gt;bread&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;ul&gt;
+    &lt;li&gt;eggs&lt;/li&gt;
+    &lt;li&gt;milk&lt;/li&gt;
+    &lt;li&gt;bread&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <ul style="list-style: disc outside;">
+                <li>eggs</li>
+                <li>milk</li>
+                <li>bread</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;ol&gt;
+    &lt;li&gt;one&lt;/li&gt;
+    &lt;li&gt;two&lt;/li&gt;
+    &lt;li&gt;three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;ol&gt;
+    &lt;li&gt;one&lt;/li&gt;
+    &lt;li&gt;two&lt;/li&gt;
+    &lt;li&gt;three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <ol style="list-style: number outside;">
+                <li>one</li>
+                <li>two</li>
+                <li>three</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/html-structure-sidebar.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;div <span class="highlighted">class="sidebar"</span>&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;div class="sidebar"&gt;
+    <i>text
+    search</i>
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;span&gt;&lt;/span&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;input /&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;input type="<span class="highlighted">text</span>" /&gt;</code></pre>
+            <input style="font-size: 50px;" type="text" />
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;input type="<span class="highlighted">checkbox</span>" /&gt;</code></pre>
+            <div>
+                <input type="checkbox" /> yes
+            </div>
+            <div>
+                <input type="checkbox" /> no
+            </div>
+            <div>
+                <input type="checkbox" /> maybe
+            </div>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;input type="<span class="highlighted">radio</span>" /&gt;</code></pre>
+            <div>
+                <input name="radio_group" type="radio" /> yes
+            </div>
+            <div>
+                <input name="radio_group" type="radio" /> no
+            </div>
+            <div>
+                <input name="radio_group" type="radio" /> maybe
+            </div>
+        </div>
+
+        <div class="slide">
+
+            <div style="display: inline-block; width: 45%;">
+                <div class="code">html</div>
+                <div class="code">head</div>
+                <div class="code">body</div>
+                <div class="code">p</div>
+                <div class="code">br</div>
+                <div class="code">a</div>
+                <div class="code">img</div>
+            </div>
+
+            <div style="display: inline-block; width: 45%;">
+                <div class="code">em</div>
+                <div class="code">strong</div>
+                <div class="code">ul</div>
+                <div class="code">ol</div>
+                <div class="code">li</div>
+                <div class="code">div</div>
+                <div class="code">span</div>
+                <div class="code">input</div>
+            </div>
+
+        </div>
+
+        <div class="slide">
+            <h2>HTML reference on <a href="materials/html_cheatsheet.pdf">the class page</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>HTML in Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-legend-html.png);">
+        </div>
+
+        <div class="slide">
+            <h2>you can add HTML before and after Carto legends</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+        </div>
+
+        <div class="slide">
+            <h2>in popups, <code>{{}}</code> around a field name will be replaced by the value of that field for the feature you clicked</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+            <div style="background-color: rgba(255, 255, 255, 0.8);"><code>{{neighbourhood}}, {{neighbourhood_group}}</code></div>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+            <div style="background-color: rgba(255, 255, 255, 0.8);">
+                <code>{{neighbourhood}}, {{neighbourhood_group}}</code>
+                <p>becomes</p>
+                <p>SoHo, Manhattan</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>you can use this to add links within Carto maps</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;p&gt;
+    &lt;a href="http://data.cityofnewyork.us"&gt;source&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and in popups those links can change based on the clicked feature</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;p&gt;
+    &lt;a href="{{url}}"&gt;learn more&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;p&gt;
+    &lt;a href="{{url}}"&gt;learn more&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+            <h2>(if there is a field called <code>url</code>)<h2>
+        </div>
+
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 5</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>some notes on terminology</h2>
+        </div>
+
+        <div class="slide">
+            <h2>elements</h2>
+        </div>
+
+        <div class="slide">
+            <h2>element:</h2>
+            <h2>an opening tag, closing tag, and all the things inside it</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">&lt;p&gt;
+            Text goes here
+        &lt;/p&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>"a p element"</p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    <span class="highlighted">&lt;body&gt;
+        &lt;p&gt;
+            Text goes here
+        &lt;/p&gt;
+    &lt;/body&gt;</span>
+&lt;/html&gt;</code></pre>
+            <p>"a body element"</p>
+        </div>
+
+        <div class="slide">
+            <h2>elements go inside other elements</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">&lt;p&gt;
+            Text goes here
+        &lt;/p&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>"the p element is in the body element"</p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">&lt;p&gt;
+            Text goes here
+        &lt;/p&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>"the p element is also in the html element"</p>
+        </div>
+
+        <div class="slide">
+            <h2>indent elements one more step than the elements they are inside</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+<span class="highlighted">    </span>&lt;head&gt;
+<span class="highlighted">    </span>&lt;/head&gt;
+<span class="highlighted">    </span>&lt;body&gt;
+<span class="highlighted">    </span>    &lt;p&gt;
+<span class="highlighted">    </span>        Text goes here
+<span class="highlighted">    </span>    &lt;/p&gt;
+<span class="highlighted">    </span>&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>everything in the html element is indented once</p>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    <span class="highlighted">    </span>&lt;p&gt;
+    <span class="highlighted">    </span>    Text goes here
+    <span class="highlighted">    </span>&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>everything in the body element is indented again</p>
+        </div>
+
+        <div class="slide">
+            <h2>make sure you move an entire element</h2>
+        </div>
+
+        <div class="slide">
+            <h2>move this</h2>
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">&lt;p&gt;
+            Text goes here
+        &lt;/p&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>don't move this</h2>
+            <pre class="prettyprint"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="highlighted">&lt;p&gt;
+            Text goes here</span>
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-format-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-format-0a.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-format-1.png);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>this is going to take some effort</h2>
+        </div>
+
+        <div class="slide">
+            <h2>don't memorize this stuff</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/copy-paste.gif);">
+            <h2>copy paste is <em>recommended</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>copy paste (with your customizations) is <em>recommended</em></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/codecademy-html.png);">
+            <h2>learn more here</h2>
+            <a class="source" href="https://www.codecademy.com/learn/learn-html">codecademy.com/learn/learn-html</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/shayhowe.png);">
+            <h2>and here</h2>
+            <a class="source" href="http://learn.shayhowe.com/html-css">learn.shayhowe.com/html-css</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/w3schools.png);">
+            <h2 style="margin-top: 175px;">use, but with caution</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mdn.png);">
+            <h2 style="margin-top: 275px;">recommended</h2>
+            <a href="https://developer.mozilla.org/en-US/" class="source">developer.mozilla.org</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/css-tricks.png);">
+            <h2 style="margin-top: 275px;">recommended</h2>
+            <a href="https://css-tricks.com/" class="source">css-tricks.com</a>
+        </div>
+
+        <div class="slide">
+            <h2>HTML does not make nice-looking web pages on its own</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CSS will help us with that (next week!)</h2>
+        </div>
+
+        <div class="slide">
+            <h2>please do focus on getting a grasp on HTML this week and next time we'll get to CSS</h2>
+        </div>
+
+    </body>
+</html>
