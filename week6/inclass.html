@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>In-class Exercise | Advanced GIS</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">Advanced GIS</a>
+                <h1>In-class Exercise: JavaScript</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: Change some settings on a map loaded in JavaScript</h2>
+                <ol>
+                    <li>Remix <a href="https://glitch.com/edit/#!/dandelion-milk">this Glitch</a> in your account.</li>
+                    <li>The map is currently showing the whole world at once but the data is mostly on the eastern US coast. Let's recenter the map.</li>
+                    <li>In the <strong>script.js</strong> file on <strong>lines 4 - 8</strong> there should be code like this: <pre><code>var map = L.map('map', {
+  center: [30, 0],
+  zoom: 3
+});</code></pre>
+                        In this code:
+                        <ol>
+                            <li><code>30</code> is the center latitude,</li>
+                            <li><code>0</code> is the center longitude, and</li>
+                            <li><code>3</code> is the zoom level.</li>
+                        </ol>
+                    </li>
+                    <li>Try editing the zoom and see what changes on the map.</li>
+                    <li>Try editing the latitude and longitude. If you want to be more precise, try using <a href="http://bboxfinder.com/">bboxfinder</a> to find a helpful center. (Keep an eye on the order of the latitude and longitude though!)</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: Change the basemap</h2>
+                <ol>
+                    <li>Continuing with your code from the previous part, let's change the basemap. On <strong>line 9</strong> there is a url like this:
+                        <pre><code>https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png</code></pre>
+                    </li>
+                    <li>Change the basemap URL to another Carto style. Pick one of the following:
+                        <ul>
+                            <li><pre><code>https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png</code></pre></li>
+                            <li><pre><code>https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png</code></pre></li>
+                            <li><pre><code>https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png</code></pre></li>
+                            <li><pre><code>https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png</code></pre></li>
+                        </ul>
+                        copy the url, and paste the url in the code on line 9.
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: Load your own data</h2>
+                <ol>
+                    <li>Continuing with your code from the previous part, let's load your data on the map.</li>
+                    <li>In the code, we need to tell Carto which username we are using. On <strong>line 14</strong> you should see my username (<code>brelsfoeagain</code>). Keeping the quotation marks, replace my username with your username.</li>
+                    <li>Next pick some data to load. Login to your Carto account and look at your datasets. It doesn't matter which one you pick for this exercise as long as it is valid. If the dataset is <strong>private</strong>, change the privacy settings so it is either <strong>public</strong> or <strong>Only accessible with link</strong>.</li>
+                    <li>Copy the exact name of the dataset and on <strong>line 20</strong> replace my dataset name (<code>hms_efh_2009tiger_shark</code>) with yours. Again, the quotation marks need to remain.</li>
+                    <li>Style your data as you wish. I would recommend starting with some CartoCSS that you made within Carto. Replace my CartoCSS on <strong>lines 24 - 31</strong> with your CartoCSS.</li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Advanced GIS</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>
