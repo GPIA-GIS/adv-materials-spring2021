@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 7 | Advanced GIS</title>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans" rel="stylesheet" type="text/css">
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 7</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 7</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-sarah.png);">
+            <a href="https://vermont-protected-lands.glitch.me/" class="source">Sarah</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-gulsum.png);">
+            <a href="https://chemical-classic-technosaurus.glitch.me/" class="source">Gulsum</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/carto-single-layer.png);">
+            <a href="https://dandelion-milk.glitch.me/" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <ol>
+                <li>load Carto and Leaflet libraries</li>
+                <li>make a place for the map to go</li>
+                <li>tell Carto and Leaflet to create the map</li>
+            </ol>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet.png); background-size: 30%;">
+            <a class="source" href="http://leafletjs.com/">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>a few things leaflet does:</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-tiles.gif);">
+            <h2>tiles</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-popups.gif);">
+            <h2>popups</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-zoom-and-pan.gif);">
+            <h2>zoom and pan</h2>
+        </div>
+
+        <div class="slide">
+            <h2>leaflet is used all over the place</h2>
+        </div>
+
+        <div class="slide">
+            <h2>leaflet is used all over the place</h2>
+            <img style="float: left; max-width: 25%;" src="img/carto.png" />
+        </div>
+
+        <div class="slide">
+            <h2>leaflet is used all over the place</h2>
+            <img style="float: left; max-width: 25%;" src="img/carto.png" />
+            <img style="float: left; max-width: 25%; background: white;" src="img/osm.svg" />
+        </div>
+
+        <div class="slide">
+            <h2>leaflet is used all over the place</h2>
+            <img style="float: left; max-width: 25%;" src="img/carto.png" />
+            <img style="float: left; max-width: 25%; background: white;" src="img/osm.svg" />
+            <p style="clear: both;">+ tons of other sites with maps on them</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/urban-reviewer.png);">
+          <a class="source" href="http://www.urbanreviewer.org/#map=12/40.7400/-73.9462">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/urban-reviewer-attribution.png);">
+          <a class="source" href="http://www.urbanreviewer.org/#map=12/40.7400/-73.9462">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>why's it so popular?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can use it for free forever</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can use it for free forever (as long as you have a place to host your site)</h2>
+        </div>
+
+        <div class="slide">
+            <h2>it also has some handy plugins we'll talk about soon</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>variables</h2>
+        </div>
+
+        <div class="slide">
+            <h2>variables hold on to things so you can use them later</h2>
+        </div>
+
+        <div class="slide">
+            <h2>variables can be numbers</h2>
+            <pre class="prettyprint"><code>var size = 5;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and you can do math on them</h2>
+            <pre class="prettyprint"><code>var size = 5 * 1000;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>variables can also be strings (text)</h2>
+            <pre class="prettyprint"><code>var greeting = 'Hello world';</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>variables can also be strings (text)</h2>
+            <pre class="prettyprint"><code>var greeting = 'Hello world';</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>strings are wrapped in <code>'</code> or <code>"</code></h2>
+            <pre class="prettyprint"><code>var greeting = 'Hello world';</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>strings are wrapped in <code>'</code> or <code>"</code></h2>
+            <pre class="prettyprint"><code>var greeting = 'Hello world';</code></pre>
+            <pre class="prettyprint"><code>var greeting = "Hello world";</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>strings are wrapped in <code>'</code> or <code>"</code></h2>
+            <pre class="prettyprint"><code>var greeting = 'Hello world';</code></pre>
+            <pre class="prettyprint"><code>var greeting = "Hello world";</code></pre>
+            <h2>either works!</h2>
+        </div>
+
+        <div class="slide">
+            <h2>and you can add strings together</h2>
+            <pre class="prettyprint" style="font-size: 35px; line-height: 45px;"><code>var query = 'SELECT * FROM listings';
+query + ' WHERE price &gt; 100';</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>variables can also be other things like maps</h2>
+        </div>
+
+        <div class="slide">
+            <h2>variables can also be other things like maps</h2>
+            <pre class="prettyprint"><code>var map = L.map('map');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>variables can only have characters and numbers in their names</h2>
+        </div>
+
+        <div class="slide">
+            <h2>so don't to this:</h2>
+            <pre class="prettyprint"><code>var <span class="highlighted">shark map</span> = L.map('map');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and don't to this:</h2>
+            <pre class="prettyprint"><code>var <span class="highlighted">shark-map</span> = L.map('map');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>do this instead:</h2>
+            <pre class="prettyprint"><code>var <span class="highlighted">sharkMap</span> = L.map('map');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>sometimes we want to see the value of a variable</h2>
+        </div>
+
+        <div class="slide">
+            <h2>the most straightforward way is usually to use <code>console.log()</code></h2>
+        </div>
+
+        <div class="slide">
+            <h2>like this:</h2>
+            <pre class="prettyprint"><code>console.log(query);</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/console-log.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/console-log.png);">
+          <h2>whatever you log ends up in developer tools</h2>
+        </div>
+
+        <div class="slide">
+            <h2>arrays</h2>
+        </div>
+
+        <div class="slide">
+            <h2>arrays are lists of things</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var ratings = [
+    5,
+    3,
+    4.5
+];</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var lifeStages = [
+    'Neonate',
+    'Juvenile',
+    'Adult'
+];</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var lifeStages = [
+    'Neonate',
+    'Juvenile',
+    'Adult'
+];</code></pre>
+            <code>lifeStages[0]</code> is 'Neonate'
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var lifeStages = [
+    'Neonate',
+    'Juvenile',
+    'Adult'
+];</code></pre>
+            <code>lifeStages[1]</code> is 'Juvenile'
+        </div>
+
+        <div class="slide">
+          <h2><code>[</code> and <code>]</code> in JavaScript almost always mean we're making an array or getting something out of one</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>objects</h2>
+        </div>
+
+        <div class="slide">
+            <h2>objects store structured data</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var coordinates = {
+    latitude: 41.56,
+    longitude: -73.29
+};</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>you can think of objects like dictionaries of keys and values</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var coordinates = {
+    latitude: 41.56,
+    longitude: -73.29
+};</code></pre>
+            <h2>get a value out of an object with <code>.</code></h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var coordinates = {
+    latitude: 41.56,
+    longitude: -73.29
+};</code></pre>
+            <code>coordinates.latitude</code> is 41.56
+        </div>
+
+        <div class="slide">
+          <h2>sometimes with <code>""</code> around keys</h2>
+            <pre class="prettyprint"><code>var coordinates = {
+    "latitude": 41.56,
+    "longitude": -73.29
+};</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>you'll see objects when setting options:</h2>
+            <pre class="prettyprint"><code>var map = L.map('map', {
+  center: [30, 0],
+  zoom: 3
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>you'll see objects when setting options:</h2>
+            <pre class="prettyprint"><code>var map = L.map('map', <span class="highlighted">{
+  center: [30, 0],
+  zoom: 3
+}</span>);</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2><code>{</code> and <code>}</code> in JavaScript can mean many things, but for now they mean we're making an object</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>functions</h2>
+        </div>
+
+        <div class="slide">
+            <h2>functions are small pieces of reusable code</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px; line-height: 50px;"><code>var source = new carto.source.SQL('SELECT * FROM hms_efh_2009tiger_shark');</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>alert('NO');</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>console.log('The code got here');</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>Math.max(2, 25);</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px; line-height: 50px;"><code>var source = new carto.source.SQL(<span class="highlighted">'SELECT * FROM hms_efh_2009tiger_shark'</span>);</code></pre>
+            <h2>parameters</h2>
+        </div>
+
+        <div class="slide">
+            <h2>parameters affect the way a function works</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px; line-height: 50px;"><code>var source = new carto.source.SQL(<span class="highlighted">'SELECT * FROM hms_efh_2009tiger_shark'</span>);</code></pre>
+            <h2>when you change this text, the function makes a different query for you</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 3</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>we can use functions to change the data on a layer</h2>
+        </div>
+
+        <div class="slide">
+            <h2>get all of the data in the dataset:</h2>
+            <pre class="prettyprint" style="font-size: 35px; line-height: 45px;"><code>var source = new carto.source.SQL('SELECT * FROM hms_efh_2009tiger_shark');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>then later in our code we can change the SQL</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>source.setQuery("SELECT * FROM hms_efh_2009tiger_shark WHERE life_stage = 'Juvenile'");</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>let's make a button that changes what's on the map</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-button.png);">
+            <h2>like this one</h2>
+            <a href="https://glitch.com/edit/#!/carto-buttons" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>three steps:</h2>
+            <ol>
+                <li>create a button</li>
+                <li>listen for a click on the button</li>
+                <li>change the layer's SQL</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h2>look at <a href="https://glitch.com/edit/#!/carto-buttons">the example</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>1. create a button</h2>
+            <pre class="prettyprint"><code>&lt;button class="juvenile-button"&gt;
+  Juvenile habitat
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/juvenile-button.png);">
+        </div>
+
+        <div class="slide">
+            <h2>2. listen for a click on the button</h2>
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>juvenileButton.addEventListener('click', function (e) {
+  ...
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>3. change the layer's SQL</h2>
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>juvenileButton.addEventListener('click', function (e) {
+  source.setQuery("SELECT * FROM hms_efh_2009tiger_shark WHERE life_stage = 'Juvenile'");
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>let's work with some buttons</h2>
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 4</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can do similar things with other inputs</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-text-input.png);">
+            <a href="https://glitch.com/edit/#!/carto-text-input" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-dropdown.png);">
+            <a href="https://glitch.com/edit/#!/carto-dropdown" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>we'll talk more about these next time</h2>
+        </div>
+
+    </body>
+</html>
