@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 8 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 8</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 8</p>
+            <p>Please fill out <a href="https://equinox-brassy-dedication.glitch.me/">this form</a> while we settle in</p>
+        </div>
+
+        <div class="slide">
+            <h2>no class next week (March 17): spring break</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-kritika.png);">
+            <a href="https://wood-messy-aster.glitch.me/" class="source">Kritika</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-sherry.png);">
+            <a href="https://winter-fair-dolphin.glitch.me/" class="source">Sherry</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>functions?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 55px; line-height: 65px;"><code>function sayHi(name) {
+  console.log('hi ' + name);
+}</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-button.png);">
+            <a href="https://glitch.com/edit/#!/carto-buttons" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>three steps:</h2>
+            <ol>
+                <li>create a button</li>
+                <li>listen for a click on the button</li>
+                <li>change the layer's SQL</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h2>1. create a button</h2>
+            <pre class="prettyprint"><code>&lt;button class="juvenile-button"&gt;
+  just show Juvenile habitat
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/juvenile-button.png);">
+        </div>
+
+        <div class="slide">
+            <h2>2. listen for a click on the button</h2>
+            <pre class="prettyprint" style="font-size: 50px; line-height: 60px;"><code>juvenileButton.addEventListener('click', function (e) {
+  ...
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>3. change the layer's SQL</h2>
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>juvenileButton.addEventListener('click', function (e) {
+  source.setQuery("SELECT * FROM hms_efh_2009tiger_shark WHERE life_stage = 'Juvenile'");
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>events</h2>
+        </div>
+
+        <div class="slide">
+            <h2>most of the time, code happens sequentially</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-3.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-4.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-5.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-6.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-7.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-8.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-9.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-10.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-11.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-12.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-13.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/code-sequence-13.png);">
+          <h2>(you get the idea)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/doorbell.jpg);">
+        </div>
+
+        <div class="slide">
+            <h2>events give the user a way to interrupt the program</h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can use this pattern with any other kind of input</h2>
+        </div>
+
+        <div class="slide">
+            <ol>
+                <li>Add the HTML for the input to the page</li>
+                <li>Listen for the input to change</li>
+                <li>Update your data layer's SQL</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h2>you <em>could</em> make a button for each type of feature</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT * 
+FROM hms_efh_2009tiger_shark 
+WHERE life_stage = 'Adult'</code></pre>
+
+            <p>and</p>
+
+<pre class="prettyprint"><code>SELECT * 
+FROM hms_efh_2009tiger_shark 
+WHERE life_stage = 'Neonate'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>but that's kinda what dropdowns are for</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/llnyc.png);">
+            <a class="source" href="http://livinglotsnyc.org/">livinglotsnyc.org</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-dropdown.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-dropdown">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>1. create a dropdown</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 35px; line-height: 45px;"><code>&lt;select class="type-picker"&gt;
+  &lt;option value="all"&gt;Show all life stages&lt;/option&gt;
+  &lt;option value="Adult"&gt;Adult&lt;/option&gt;
+  &lt;option value="Juvenile"&gt;Juvenile&lt;/option&gt;
+  &lt;option value="Neonate"&gt;Neonate&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>2. listen for a change to the dropdown</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/doorbell.jpg);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 45px; line-height: 55px;"><code>layerPicker.addEventListener('change', function (e) {
+  ...
+});</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>with a dropdown, you want to vary the SQL by the option selected</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>SELECT * 
+FROM hms_efh_2009tiger_shark 
+WHERE life_stage = 'Adult'
+
+SELECT * 
+FROM hms_efh_2009tiger_shark 
+WHERE life_stage = 'Neonate'</code></pre>
+        </div>
+
+        <div class="slide">
+          <pre class="prettyprint" style="font-size: 60px; line-height: 70px;"><code>var lifeStage = e.target.value;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 30px; line-height: 40px;"><code>var lifeStage = e.target.value;
+var sql = "SELECT * FROM hms_efh_2009tiger_shark WHERE life_stage = " + lifeStage;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 30px; line-height: 40px;"><code>var lifeStage = e.target.value;
+var sql = "SELECT * FROM hms_efh_2009tiger_shark WHERE life_stage = '" + lifeStage + "'";</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+          <h2>the event listeners we just looked at are standard browser events</h2>
+        </div>
+
+        <div class="slide">
+          <h2>there are also map-specific events</h2>
+        </div>
+
+        <div class="slide">
+          <h2>listening for leaflet events</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-map-events.png);">
+          <a href="https://leafletjs.com/reference-1.6.0.html#map-event" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-map-events.png);">
+          <h2>map events</h2>
+          <a href="https://leafletjs.com/reference-1.6.0.html#map-event" class="source">source</a>
+        </div>
+
+        <div class="slide">
+          <pre class="prettyprint"><code>map.on('moveend', function () {
+  console.log('done moving');
+});</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-map-event-example.png);">
+          <a href="https://glitch.com/edit/#!/leaflet-map-events" class="source">source</a>
+        </div>
+
+        <div class="slide">
+          <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>popups</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups.png);">
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-0.png);">
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-0.png);">
+            <h2>1. when creating the layer, tell Carto which fields are allowed in the popup</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-fields.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-fields.png);">
+            <h2>like when you tell Carto which fields are in the popup</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-1.png);">
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-1.png);">
+            <h2>make an HTML string that goes into the popup</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-1.png);">
+            <h2>this can be basically any HTML you can imagine, including video, images, and audio</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popups-code-1.png);">
+            <h2>start simple and add to it</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-sidebar.png);">
+            <a href="https://glitch.com/edit/#!/carto-sidebar" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-sidebar.png);">
+          <h2>the process is very similar for putting data in a sidebar (or elsewhere on a page)</h2>
+            <a href="https://glitch.com/edit/#!/carto-sidebar" class="source">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>gathering data</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/ushahidi.png);">
+            <a href="https://www.ushahidi.com/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/fulcrum.png);">
+            <a href="https://www.fulcrumapp.com/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/fulcrum-story.png);">
+            <a href="https://www.fulcrumapp.com/cases/wonderful/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/fulcrum-story-2.png);">
+            <a href="https://www.fulcrumapp.com/cases/dark-sky/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/umap.png);">
+            <a href="https://umap.openstreetmap.fr/en/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/dbird.png);">
+            <a href="https://www.d-bird.org/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nypl-building-inspector.png);">
+            <a class="source" href="http://buildinginspector.nypl.org/">NYPL Building Inspector</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nypl-building-inspector.gif);">
+            <a class="source" href="http://buildinginspector.nypl.org/">NYPL Building Inspector</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nh-stone-wall-0.png);">
+            <a href="https://nhgranit.maps.arcgis.com/apps/webappviewer/index.html?id=ec12d9d5583c4709be446a77115bf0a2" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nh-stone-wall-1.png);">
+            <a href="https://nhgranit.maps.arcgis.com/apps/webappviewer/index.html?id=ec12d9d5583c4709be446a77115bf0a2" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>I'd suggest starting with Google Forms</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-creation.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-creation-privacy.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/map-form.png);">
+            <a href="https://glitch.com/edit/#!/walnut-prosecution?path=styles.css:6:0" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/map-form.png);">
+            <h2>easiest case, with the least code</h2>
+            <a href="https://glitch.com/edit/#!/walnut-prosecution?path=styles.css:6:0" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/map-form.png);">
+            <h2>you have to manually enter the latitude and longitude</h2>
+            <a href="https://glitch.com/edit/#!/walnut-prosecution?path=styles.css:6:0" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>but we can customize this a bit if we copy the way Google Forms are submitted</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-exporter.png);">
+            <a href="https://stefano.brilli.me/google-forms-html-exporter/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-0.png);">
+            <a href="https://glitch.com/edit/#!/outrageous-power-august" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-0.png);">
+            <h2>hmm but you still have to enter the latitude and longitude somehow</h2>
+            <a href="https://glitch.com/edit/#!/outrageous-power-august" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-1.png);">
+            <a href="https://glitch.com/edit/#!/chlorinated-horn-wineberry" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-1.png);">
+            <h2>using an event listener to set the latitude and longitude</h2>
+            <a href="https://glitch.com/edit/#!/chlorinated-horn-wineberry" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-2.png);">
+            <a href="https://glitch.com/edit/#!/festive-silky-revolve" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-2.png);">
+            <h2>hiding the latitude and longitude</h2>
+            <a href="https://glitch.com/edit/#!/festive-silky-revolve" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-2-hidden.png);">
+            <a href="https://glitch.com/edit/#!/festive-silky-revolve" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-3.png);">
+            <a href="https://glitch.com/edit/#!/equinox-brassy-dedication" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-3.png);">
+            <h2>same thing, with a redirect</h2>
+            <a href="https://glitch.com/edit/#!/equinox-brassy-dedication" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>when customizing a Google Form this way, you gain control over how it looks and adding a map input</h2>
+        </div>
+
+        <div class="slide">
+            <h2>but you also lose some features:</h2>
+        </div>
+
+        <div class="slide">
+            <h2>but you also lose some features:</h2>
+            <ul style="list-style: disc;">
+              <li>validation of inputs (making sure an input's not empty, for example)</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>but you also lose some features:</h2>
+            <ul style="list-style: disc;">
+              <li>validation of inputs (making sure an input's not empty, for example)</li>
+              <li>fancy radio buttons and dropdowns</li>
+            </ul>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-forms-dropdowns.png);">
+        </div>
+
+        <div class="slide">
+            <h2>you will need to make these yourself (similarly to making the map input)</h2>
+        </div>
+
+        <div class="slide">
+            <h2>once your form is working, create a Google Sheet for the responses</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/google-form-sheet.png);">
+        </div>
+
+        <div class="slide">
+            <h2>and sync that sheet up with a Carto dataset</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-datasets-sheets-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-datasets-sheets-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-datasets-sheets-2.png);">
+        </div>
+
+        <div class="slide">
+          <h2>as long as there are fields called <code>Latitude</code> and <code>Longitude</code>, this will be fine</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/carto-location-click.png);">
+            <a href="https://glitch.com/edit/#!/carto-location-click" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-location-click.png);">
+          <h2>filter features to the area around a clicked point</h2>
+            <a href="https://glitch.com/edit/#!/carto-location-click" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  ST_Transform(the_geom, 2263),
+  ST_Buffer(
+    ST_Transform(CDB_LatLng(40.732, -73.986), 2263),
+    10000
+  )
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  <strong>smaller geometry</strong>,
+  <strong>larger geometry</strong>
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  the_geom,
+  <strong>larger geometry</strong>
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  ST_Transform(the_geom, 2263),
+  <strong>larger geometry</strong>
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  ST_Transform(the_geom, 2263),
+  ST_Buffer(
+    <strong>input point</strong>,
+    10000
+  )
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  ST_Transform(the_geom, 2263),
+  ST_Buffer(
+    CDB_LatLng(40.732, -73.986),
+    10000
+  )
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql.png);">
+            <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT *
+FROM nypd_motor_vehicle_collisions
+WHERE ST_Within(
+  ST_Transform(the_geom, 2263),
+  ST_Buffer(
+    ST_Transform(CDB_LatLng(40.732, -73.986), 2263),
+    10000
+  )
+)</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/postgis.png);">
+            <a href="http://postgis.refractions.net/docs/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/spatial-sql-borough.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/spatial-sql-borough.png);">
+          <h2>you can look at relationships between layers, too</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/spatial-sql-borough.png);">
+          <pre style="background: rgba(255, 255, 255, 0.8);"><code>SELECT collisions.*
+FROM collisions
+JOIN ny_boroughs ON 
+  ST_Within(
+    collisions.the_geom,
+    ny_boroughs.the_geom
+  )
+WHERE ny_boroughs.boroname = 'Bronx'</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>leaflet plugins</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-globe.png);">
+          <a class="source" href="http://chriswhong.github.io/leaflet-globeminimap/example/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-timeline.png);">
+          <a class="source" href="https://skeate.dev/Leaflet.timeline/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-control-geocoder.png);">
+            <a href="https://github.com/perliedman/leaflet-control-geocoder" target="_blank" class="source">leaflet-control-geocoder</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-control-geocoder-demo.png);">
+            <a href="http://www.liedman.net/leaflet-control-geocoder/" target="_blank" class="source">leaflet-control-geocoder</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-minimap.png);">
+            <a href="https://github.com/Norkart/Leaflet-MiniMap" target="_blank" class="source">Leaflet.MiniMap</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-minimap-demo.png);">
+            <a href="http://norkart.github.io/Leaflet-MiniMap/example.html" target="_blank" class="source">Leaflet.MiniMap</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-markercluster.png);">
+            <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank" class="source">leaflet-markercluster</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-markercluster-demo.gif);">
+            <a href="http://leaflet.github.io/Leaflet.markercluster/example/marker-clustering-realworld.388.html" target="_blank" class="source">leaflet-markercluster</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-draw.png);">
+            <a href="https://github.com/Leaflet/Leaflet.draw" target="_blank" class="source">Leaflet.draw</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-draw-demo.png);">
+            <a href="http://leaflet.github.io/Leaflet.draw/" target="_blank" class="source">Leaflet.draw</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-mappaint.png);">
+            <a href="https://github.com/SINTEF-9012/Leaflet.MapPaint" target="_blank" class="source">Leaflet.MapPaint</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-mappaint-demo.png);">
+            <a href="http://sintef-9012.github.io/Leaflet.MapPaint/" target="_blank" class="source">Leaflet.MapPaint</a>
+        </div>
+
+
+    </body>
+</html>
