@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 9 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 9</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 9</p>
+        </div>
+
+        <div class="slide">
+            <h2>project milestones</h2>
+        </div>
+
+        <div class="slide">
+            <h2>there will be another assignment this week, but otherwise please focus on your projects</h2>
+        </div>
+
+        <div class="slide">
+            <h2>let's talk about project milestones in small groups</h2>
+        </div>
+
+        <div class="slide">
+            <h2>tell your breakout group about your current project status</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>creating data to use in a GIS</h2>
+        </div>
+
+        <div class="slide">
+            <h2>for your project, you may be creating data from scratch</h2>
+        </div>
+
+        <div class="slide">
+            <h2>if it's possible to start from another dataset, I will generally recommend this</h2>
+        </div>
+
+        <div class="slide">
+            <h2>but if you do need to create your own data, there are a few ways:</h2>
+        </div>
+
+        <div class="slide">
+          <ol>
+            <li>create a spreadsheet (in Excel) and geocode it</li>
+            <li>create a shapefile, trace satellite imagery</li>
+            <li>create a shapefile, trace an image of a map</li>
+          </ol>
+        </div>
+
+        <div class="slide" style="background-image: url(img/geocodio.png);">
+            <a class="source" href="https://www.geocod.io/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/geocodio.png);">
+            <h2>if you're geocoding, I recommend a site like geocod.io</h2>
+            <a class="source" href="https://www.geocod.io/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-digitizing.png);">
+            <a class="source" href="https://www.qgistutorials.com/en/docs/3/digitizing_basics.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-digitizing.png);">
+          <h2>if you're creating a shapefile in QGIS, you may want to follow this</h2>
+            <a class="source" href="https://www.qgistutorials.com/en/docs/3/digitizing_basics.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-georeferencing.png);">
+            <a class="source" href="https://www.qgistutorials.com/en/docs/3/advanced_georeferencing.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-georeferencing.png);">
+          <h2>similarly if you are going to trace a map image</h2>
+            <a class="source" href="https://www.qgistutorials.com/en/docs/3/advanced_georeferencing.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/qgis-georeferencing-video.png);">
+            <a class="source" href="https://www.youtube.com/watch?v=84to3iZZCc0">source</a>
+        </div>
+
+        <div class="slide">
+          <h2>think about:</h2>
+          <ul style="list-style: disc;">
+            <li>data types (text vs numbers vs dates)</li>
+            <li>level of detail</li>
+            <li>how you will use each data field</li>
+          </ol>
+        </div>
+
+        <div class="slide" style="background-image: url(img/aemp-covid-quebec.png);">
+            <a class="source" href="https://covid19.antievictionmap.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nyc-tree-map.png);">
+            <a class="source" href="https://covid19.antievictionmap.com/">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/section-1-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=Ym5IjJyI1qA">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-zoom-0.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-zoom">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-zoom-1.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-zoom">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-zoom-1.png);">
+            <h2>zooming and panning a map on an event</h2>
+            <a class="source" href="https://glitch.com/edit/#!/carto-zoom">source</a>
+        </div>
+
+        <div class="slide">
+          <h2>remember how to set the zoom and center of a map?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>map.setView([30, -80], 5);</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>remember how to select a button and add a click event listener?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 45px; line-spacing: 55px;"><code>var zoomButton = document.querySelector('.zoom-content-button');
+zoomButton.addEventListener('click', function () {
+  // ... do something!
+});</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>put them together:</h2>
+        </div>
+
+        <div class="slide">
+          <h2>put them together:</h2>
+            <pre class="prettyprint" style="font-size: 45px; line-spacing: 55px;"><code>var zoomButton = document.querySelector('.zoom-content-button');
+zoomButton.addEventListener('click', function () {
+  map.setView([30, -80], 5);
+});</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-zoom-2.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-zoom">source</a>
+        </div>
+
+        <div class="slide">
+          <h2>how would we add another button?</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+          <h2>changing styles dynamically</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-2-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=MIAEu4Srugc">video</a> of this section, too</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/dynamic-styles.gif);">
+            <a class="source" href="http://www.urbanreviewer.org/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-change-style.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-change-style">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-change-style2.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-change-style">source</a>
+        </div>
+
+        <div class="slide">
+          <h2>the key here is that a Carto style can be updated with <code>setContent()</code></h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>style.setContent(`
+  #layer {
+    [life_stage = 'Adult'] {
+      polygon-fill: green;
+    }
+    [life_stage = 'Juvenile'] {
+      polygon-fill: blue;
+    }
+    [life_stage = 'Neonate'] {
+      polygon-fill: pink;
+    }
+  }
+`);</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>in <code>setContent()</code> you pass a string with the new CartoCSS to use</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-change-style-code.png);">
+            <a class="source" href="https://glitch.com/edit/#!/carto-change-style">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>updating HTML from JavaScript</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-3-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=RSJGIgxZJgY">video</a> of this section, too</h2>
+        </div>
+
+        <div class="slide">
+            <h2>last time we talked about adding popups or putting data in a sidebar</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-sidebar.png);">
+            <a href="https://glitch.com/edit/#!/carto-sidebar" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>first, select the element we want to contain our HTML</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var sidebar =
+  document.querySelector('.sidebar');</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>then, create a string in JavaScript with our HTML</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 40px; line-height: 45px;"><code>var content = '&lt;h3&gt;' + event.data['host_name'] + '&lt;/h3&gt;';
+content += '&lt;div&gt;$' + event.data['price'] + ' per night&lt;/div&gt;';</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>finally, put that HTML in the element we selected</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>sidebar.innerHTML = content;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/sidebar-innerhtml.png);">
+          <a href="https://glitch.com/edit/#!/marsh-sled?path=script.js:65:13" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/popup-create-content.png);">
+            <a href="https://glitch.com/edit/#!/carto-popups" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/popup-create-content.png);">
+            <h2>this can quickly get difficult to manage</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup.png);">
+            <h2>you might prefer doing it the way we did in Carto</h2>
+        </div>
+
+        <div class="slide">
+            <h2>templates</h2>
+        </div>
+
+        <div class="slide">
+            <h2>templates create HTML for you</h2>
+        </div>
+
+        <div class="slide">
+            <h2>templates use variables from your code</h2>
+        </div>
+
+        <div class="slide">
+            <h2>template + data = html</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache.png);">
+            <h2><a href="http://mustache.github.io/" target="_blank">Mustache</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache.png);">
+            <h2><a href="http://mustache.github.io/" target="_blank">Mustache</a> is one library for making templates</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache.png);">
+            <h2><a href="http://mustache.github.io/" target="_blank">Mustache</a> is the same library Carto uses to make popups</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-docs.png);">
+            <a href="http://mustache.github.io/mustache.5.html" target="_blank" class="source">Mustache docs</a>
+        </div>
+
+        <div class="slide">
+            <h2>you can make your own popup HTML</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 45px;"><code>&lt;div&gt;
+    &lt;div&gt;{{on_street_name}} and {{cross_street_name}}&lt;/div&gt;
+    &lt;div&gt;On {{date}} at {{time}}&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 45px;"><code>&lt;div&gt;
+    &lt;div&gt;{{on_street_name}} and {{cross_street_name}}&lt;/div&gt;
+    &lt;div&gt;On {{date}} at {{time}}&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h2>anything in {{}} gets replaced by Mustache</h2>
+        </div>
+
+        <div class="slide">
+            <p>template:</p>
+            <pre class="prettyprint" style="font-size: 35px;"><code>&lt;div&gt;
+    &lt;div&gt;{{on_street_name}} and {{cross_street_name}}&lt;/div&gt;
+    &lt;div&gt;On {{date}} at {{time}}&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>data:</p>
+            <pre class="prettyprint" style="font-size: 35px;"><code>var context = {
+    on_street_name: "BEDFORD AVENUE",
+    cross_street_name: "AVENUE N",
+    date: "01/23/2019",
+    time: "18:42:00"
+};</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>results in</h2>
+            <pre class="prettyprint" style="font-size: 45px;"><code>&lt;div&gt;
+    &lt;div&gt;BEDFORD AVENUE and AVENUE N&lt;/div&gt;
+    &lt;div&gt;On 01/23/2019 at 18:42:00&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>we'll call the data you pass to the template its <em>context</em></h2>
+        </div>
+
+        <div class="slide">
+            <h2>passing the <em>context</em> to Mustache tells it how to fill your template</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-mustache-example.png);">
+            <h2>take a look at this code</h2>
+            <a href="https://glitch.com/edit/#!/carto-popups-mustache" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>the nice thing about templates is you can keep your HTML and JavaScript separate</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html">in-class exercise part 2</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-list-results.png);">
+            <a href="https://glitch.com/edit/#!/jasper-broccoli" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-list-results.png);">
+            <h2>Mustache can also help with making HTML for a list of things</h2>
+            <a href="https://glitch.com/edit/#!/jasper-broccoli" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-loop.png);">
+            <a href="https://glitch.com/edit/#!/jasper-broccoli" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-loop.png);">
+            <h2>here <code>rows</code> is an array</h2>
+            <a href="https://glitch.com/edit/#!/jasper-broccoli" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mustache-loop.png);">
+            <h2>an <code>li</code> is made for each element in that array</h2>
+            <a href="https://glitch.com/edit/#!/jasper-broccoli" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>getting data from Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-4-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=mD-NsQBDXao">video</a> of this section, too</h2>
+        </div>
+
+        <div class="slide">
+            <h2>with JavaScript you can ask Carto for any data from your datasets</h2>
+        </div>
+
+        <div class="slide">
+            <h2>this can be handy for showing summaries on a page</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/count-widget.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/raptor-tracker.png);">
+            <a href="https://raptortracker.mpgranch.com/#/golden-eagles" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count.png);">
+            <a href="https://glitch.com/edit/#!/marsh-sled" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count.png);">
+            <h2>let's take a look at the code behind this</h2>
+            <a href="https://glitch.com/edit/#!/marsh-sled" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-spatial-sql-count.png);">
+            <a href="https://glitch.com/edit/#!/carto-location-click2" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>you do this by giving Carto the SQL, and it returns an object of data</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-fetch.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-fetch.png);">
+          <pre><code>https://brelsfoeagain.carto.com/api/v2/sql/?q=
+  SELECT COUNT(*)
+  FROM nypd_motor_vehicle_collisions</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-url.png);">
+            <a href="https://brelsfoeagain.carto.com/api/v2/sql/?q= SELECT COUNT(*) FROM nypd_motor_vehicle_collisions" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-url.png);">
+            <h2>this is just a URL you can open in a browser</h2>
+            <a href="https://brelsfoeagain.carto.com/api/v2/sql/?q= SELECT COUNT(*) FROM nypd_motor_vehicle_collisions" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-network-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-network-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-count-network-2.png);">
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var data = {
+    "rows": [
+        {"count":208}
+    ],
+    "time":0.006,
+    "fields": {
+        "count": {"type":"number"}
+    },
+    "total_rows":1
+};</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>remember arrays and objects?</h2>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var lifeStages = [
+    'Neonate',
+    'Juvenile',
+    'Adult'
+];</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var lifeStages = [
+    'Neonate',
+    'Juvenile',
+    'Adult'
+];</code></pre>
+            <code>lifeStages[0]</code> is 'Neonate'
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint"><code>var coordinates = {
+    latitude: 41.56,
+    longitude: -73.29
+};</code></pre>
+            <code>coordinates.latitude</code> is 41.56
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>var data = {
+    "rows": [
+        {"count":208}
+    ],
+    "time":0.006,
+    "fields": {
+        "count": {"type":"number"}
+    },
+    "total_rows":1
+};</code></pre>
+            <code>data.rows</code> is <pre class="prettyprint"><code>[
+    {"count":208}
+]</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>var data = {
+    "rows": [
+        {"count":208}
+    ],
+    "time":0.006,
+    "fields": {
+        "count": {"type":"number"}
+    },
+    "total_rows":1
+};</code></pre>
+            <code>data.rows[0]</code> is <code>{"count":208}</code>
+        </div>
+
+        <div class="slide">
+            <pre class="prettyprint" style="font-size: 25px; line-height: 35px;"><code>var data = {
+    "rows": [
+        {"count":208}
+    ],
+    "time":0.006,
+    "fields": {
+        "count": {"type":"number"}
+    },
+    "total_rows":1
+};</code></pre>
+            <code>data.rows[0].count</code> is <code>208</code>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-sql-api.png);">
+            <a href="https://carto.com/docs/carto-engine/sql-api/making-calls/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-sql-api.png);">
+          <h2>learn more in the Carto documentation</h2>
+            <a href="https://carto.com/docs/carto-engine/sql-api/making-calls/" class="source">source</a>
+        </div>
+
+    </body>
+</html>
