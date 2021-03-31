@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>In-class Exercise | Advanced GIS</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">Advanced GIS</a>
+                <h1>In-class Exercise</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: Creating styles with Mapbox</h2>
+                <ol>
+                    <li>Create an account with <a href="https://www.mapbox.com/">Mapbox</a> if you don't already have one.</li>
+                    <li>Go to <strong>Styles</strong> and create a new style. When picking a template style, start with anything but the <strong>Satellite Streets</strong> template. <strong>Basic</strong> is fine for this activity.</li>
+                    <li>Consider what kind of features you want to highlight on your map try to highlight those features, optionally considering how your final project data would look on top of the basemap you are making.</li>
+                    <li>Edit the style. Attempt to change various properties in components and in specific layers.</li>
+                    <li>Complete the following sentences (you may be asked to share some responses):
+                        <ol>
+                            <li><strong>"One nice thing about Mapbox Studio is..."</strong></li>
+                            <li><strong>"Something I don't quite understand about Mapbox Studio is..."</strong></li>
+                            <li><strong>"I want to use Mapbox Studio to..."</strong></li>
+                        </ol>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: Using Mapbox styles in Carto</h2>
+                <ol>
+                    <li>Publish your style from Part 1.</li>
+                    <li>Click the <strong>Share</strong> button once you publish it, then select <strong>Third party</strong> and <strong>CARTO</strong>.</li>
+                    <li>Copy the URL next to <strong>Integration URL</strong>.</li>
+                    <li>Open a Carto map.</li>
+                    <li>Click on the base map (the bottom layer).</li>
+                    <li>Under <strong>Source</strong> scroll over to and click <strong>Mapbox</strong>, then click the <strong>+</strong> under <strong>Style</strong> and paste the url you copied from Mapbox under the <strong>Mapbox</strong> tab.</li>
+                    <li>Click <strong>Add basemap</strong> and your basemap from Mapbox should appear.</li>
+                    <li>Publish your Carto map (you don't need to use JavaScript here).</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: Using Mapbox styles in JavaScript</h2>
+                <ol>
+                    <li>Copy the same basemap URL from Mapbox as you did in Part 2.</li>
+                    <li>Edit a Glitch site with a Carto map made in JavaScript, using <a href="https://glitch.com/edit/#!/carto-single-layer">this one</a> if you need a starter.</li>
+                    <li>In JavaScript, paste the URL from Mapbox on the line starting with <code>L.tileLayer</code>.</li>
+                    <li>Confirm that your Mapbox style is visible as the basemap.</li>
+                    <li>Share a link to your Glitch site in the chat.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 4: Adding your own data to Mapbox</h2>
+                <ol>
+                    <li>Download <a href="data/week10data.zip">today's data</a>.</li>
+                    <li>From your Mapbox dashboard, go to <strong>Tilesets &gt; New Tileset</strong> and upload the <strong>disputed-areas</strong> zip file in today's data.</li>
+                    <li>Continue with your style from earlier or create a new one.</li>
+                    <li>While editing your style, click <strong>+</strong> in the top of the <strong>Layers</strong> tab, then click the <strong>Source</strong> button. Find and click on the data you uploaded under <strong>Unused sources</strong>.</li>
+                    <li>Click <strong>Style</strong> and style the layer.</li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Advanced GIS</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 10 | Advanced GIS</title>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 10</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 10</p>
+        </div>
+
+        <div class="slide">
+            <h2>dates to remember</h2>
+        </div>
+
+        <div class="slide">
+            <h2>April 28 and May 5: final project presentations</h2>
+        </div>
+
+        <div class="slide">
+            <h2>May 9: final projects due</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-majid.png);">
+            <a href="https://glitch.com/edit/#!/cyber-mire-star" class="source">Majid</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-victoria.png);">
+            <a href="https://final-proj-map-1b.glitch.me/" class="source">Victoria</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/ever-given-ever-ywhere.png);">
+            <a href="https://evergiven-everywhere.glitch.me/" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>making base maps</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-1-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=IpCZ4Rk_94M">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide">
+            <h2>some webmaps use raster tiles</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tile-template-url.png);">
+            <a href="https://glitch.com/edit/#!/carto-single-layer" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles.gif);">
+            <a href="http://maptimeboston.github.io/web-maps-101/#17" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles.gif);">
+            <h2>raster tiles are 256 x 256 pixel images</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles.gif);">
+            <h2>they use the same <em>zoom</em>, <em>x</em>, and <em>y</em> values, so they're interchangeable</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom0.png);">
+            <h2>each tile is just an image on the internet</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom0.png);">
+            <p style="background: white;">http://a.tile.stamen.com/toner/0/0/0.png</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/openwhatevermap.png);">
+            <a href="http://www.openwhatevermap.xyz/" class="source">openwhatevermap.xyz</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom-2.jpg);">
+            <a href="http://maptimeboston.github.io/web-maps-101/#17" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom-3.jpg);">
+            <a href="http://maptimeboston.github.io/web-maps-101/#17" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom-3.jpg);">
+            <h2>as you zoom in, the number of tiles quadruples</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-zoom-3.jpg);">
+            <h2>if you made tiles for all of zoom 18 you'd have <em>billions</em> of images</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/tiles-loading.gif);">
+            <h2>that's why browsers only load what you need to see</h2>
+            <a href="http://maptimeboston.github.io/web-maps-101/#17" class="source">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>so how do you <em>make</em> base maps?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>it depends!</h2>
+        </div>
+
+        <div class="slide">
+            <h2>in theory you can make tiles on your own</h2>
+        </div>
+
+        <div class="slide">
+            <h2>many mapmakers turn to Mapbox</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio.png);">
+            <a href="https://www.mapbox.com/mapbox-studio/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio.png);">
+            <h2>Mapbox provides (modified) OpenStreetMap data</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>creating styles</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-2-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=9B851SXoKSw">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-new.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-layers.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-layers.png);">
+            <h2>like most GISs, Mapbox maps are layer-based</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-components.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-components.png);">
+            <h2>layers are grouped into similar feature types, a layer group is called a component</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-edit.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-edit.png);">
+            <h2>you can change all of the layers in a component simultaneously</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-view-layers.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-view-layers.png);">
+            <h2>or you can view the layers that make up that component</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-layers.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-layer-edit.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-layer-edit.png);">
+            <h2>layers have a lot more settings than components</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-layer-edit.png);">
+            <h2>by default, a layer in a component is locked</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-layer-edit.png);">
+            <h2>you can "override" individual settings and change them</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-new.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-new.png);">
+            <h2>not sure which component or layer a feature is on?</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-feature-layer.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-feature-layer.png);">
+            <h2>click it!</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-feature-layer-edit.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-feature-layer-edited.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-feature-layer-edited.png);">
+            <h2>want to see exactly which features are in a layer?</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer.png);">
+            <h2>first, go to the layer</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-select.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-select.png);">
+            <h2>click Select Data</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray.png);">
+            <h2>green features will appear on the map, pink are on the layer but filtered out</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray-click.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray-click.png);">
+            <h2>click a feature to see the data behind it</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray-filters.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-view-layer-xray-filters.png);">
+            <h2>some settings can't be changed without "ejecting" a layer from a component</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-component-eject.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-color.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-zoom-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-zoom-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-studio-field.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>how should we design base maps?</h2>
+        </div>
+
+        <div class="slide">
+            <h2>not too differently from offline maps</h2>
+        </div>
+
+        <div class="slide">
+            <h2>think about:</h2>
+            <ul style="list-style: disc; padding-left: 50px;">
+                <li>scale</li>
+                <li>hierarchy</li>
+                <li>color</li>
+                <li>symbology</li>
+            </ul>
+        </div>
+
+        <div class="slide" style="background-image: url(img/scale.jpg);">
+            <h2>scale</h2>
+        </div>
+
+        <div class="slide">
+            <h2>hierarchy</h2>
+            <p>"Important things must look important, and the most important thing should look the most important."</p>
+            <a class="source" href="http://books.google.com/books?id=vF0Chp0YZn0C">
+                Understanding Different Geographies
+            </a>
+        </div>
+
+        <div class="slide">
+            <h2>color</h2>
+            <p>Think about what the colors you are using mean to the viewer.</p>
+            <p>Use contrast to your advantage.</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/symbols.png);">
+            <h2>symbology</h2>
+            <a class="source" href="http://www.svgopen.org/2008/papers/41-MapViewSVG__an_extension_for_ESRI_GIS_and_Mapping_Software/">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>and consider how your data will look on top of it</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/surging-seas.png);">
+            <a class="source" href="https://ss2.climatecentral.org/#12/40.6211/-73.9170?show=satellite&projections=0-K14_RCP85-SLR&level=9&unit=feet&pois=hide">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/census-hard-to-count.png);">
+            <a class="source" href="http://www.censushardtocountmaps2020.us/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/land-grab-universities.png);">
+            <a class="source" href="https://www.landgrabu.org/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/wapo-renters.png);">
+            <a class="source" href="https://www.washingtonpost.com/news/wonk/wp/2016/05/25/how-much-a-decent-apartment-costs-you-in-every-county/?noredirect=on&utm_term=.32ddb5129c24">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>using Mapbox tiles in Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-3-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=kTIRGyeNx_c">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-publish.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-share.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-basemap.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-mapbox-basemap.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-4-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=b6Oh4ZBKf6o">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-mapbox.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 3</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/mapbox-tileset-link.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-tileset-link.png);">
+            <h2>adding your own data to a Mapbox style</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/section-5-video.png);">
+          <h2>there is a <a href="https://www.youtube.com/watch?v=ONMta8JHDG0">video</a> of the following section</h2>
+        </div>
+
+        <div class="slide">
+            <p>1. Upload data (such as a zipped shapefile)</p>
+            <p>2. Add the tileset to your style</p>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-add-tileset.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-upload-tileset.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-add-layer.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-data-add.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 4</a></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-pricing.png);">
+            <a class="source" href="https://www.mapbox.com/pricing/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-pricing.png);">
+            <h2>Mapbox isn't free</h2>
+            <a class="source" href="https://www.mapbox.com/pricing/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-pricing.png);">
+            <h2>but it has a pretty generous free level</h2>
+            <a class="source" href="https://www.mapbox.com/pricing/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-pricing.png);">
+            <h2>by default, Glitch refreshes every time you press a key, which adds another map view</h2>
+            <a class="source" href="https://www.mapbox.com/pricing/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-pricing.png);">
+            <h2>you might not want to use Mapbox tiles when coding</h2>
+            <a class="source" href="https://www.mapbox.com/pricing/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-refresh.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-refresh.png);">
+            <h2>or turn off automatic refreshing in Glitch</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-qgis-arc.png);">
+            <a class="source" href="https://docs.mapbox.com/help/tutorials/mapbox-arcgis-qgis/">source</a>
+        </div>
+
+    </body>
+</html>
