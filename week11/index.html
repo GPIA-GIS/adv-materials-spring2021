@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 11 | Advanced GIS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Advanced GIS, Lecture 11</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Advanced GIS</h1>
+            <p>Class 11</p>
+        </div>
+
+        <div class="slide">
+            <h2>dates to remember</h2>
+        </div>
+
+        <div class="slide">
+            <h2>April 28 and May 5: final project presentations</h2>
+        </div>
+
+        <div class="slide">
+            <h2>May 9: final projects due</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github.png);">
+            <h2>GitHub</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-carto.png);">
+            <a class="source" href="https://github.com/CartoDB/cartodb">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-carto.png);">
+            <h2>in GitHub, projects are kept in <em>repositories</em>, or <em>repos</em> for short</h2>
+            <a class="source" href="https://github.com/CartoDB/cartodb">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-carto.png);">
+            <h2>you can think of repos as folders</h2>
+            <a class="source" href="https://github.com/CartoDB/cartodb">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/fivethirtyeight-redistricting.png);">
+            <a class="source" href="https://projects.fivethirtyeight.com/redistricting-maps/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-fivethirtyeight.png);">
+            <a class="source" href="https://github.com/fivethirtyeight/redistricting-atlas-data">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-fivethirtyeight.png);">
+            <h2>you can store anything in a repo, including data</h2>
+            <a class="source" href="https://github.com/fivethirtyeight/redistricting-atlas-data">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/covid-data-jhu.png);">
+            <a class="source" href="https://github.com/CSSEGISandData/COVID-19">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/covid-data-nychealth.png);">
+            <a class="source" href="https://github.com/nychealth/coronavirus-data">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/covid-data-nytimes.png);">
+            <a class="source" href="https://github.com/nytimes/covid-19-data">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github.png);">
+            <h2>many tech-focused jobs will require some GitHub knowledge</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2>GitHub Pages</h2>
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2>GitHub Pages: free web hosting</h2>
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2>once you get your code on GitHub, they'll display those pages for free</h2>
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2>this is very common</h2>
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pages.png);">
+            <h2>and GitHub Pages perform better for viewers than Glitch</h2>
+            <a class="source" href="https://pages.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/aemp-tenant-protections.png);">
+            <a class="source" href="https://antievictionmappingproject.github.io/covid-19-map/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/aemp-tenant-protections-url.png);">
+            <a class="source" href="https://antievictionmappingproject.github.io/covid-19-map/">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>there are a few ways to put your code in GitHub:</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-desktop.png);">
+            <a class="source" href="https://desktop.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-desktop.png);">
+            <h2>the GitHub Desktop app</h2>
+            <a class="source" href="https://desktop.github.com/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/git-command-line.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/git-command-line.png);">
+            <h2>the command line</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch.png);">
+            <h2>we'll use Glitch</h2>
+        </div>
+
+        <div class="slide">
+            <h2>two phases:</h2>
+            <p>1. initial setup</p>
+            <p>2. updating the code</p>
+        </div>
+
+        <div class="slide">
+            <h2>1. initial setup</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-new-repo.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-create-repo.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-create-repo.png);">
+            <h2>use a descriptive repository name (doesn't have to match your Glitch project name)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-create-repo.png);">
+            <h2>initialize with a README</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-empty-repo.png);">
+        </div>
+
+        <div class="slide">
+            <h2>2. updating the code</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-export-to-github.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-grant.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-authorize-github.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-authorize-github.png);">
+            <h2>authorize (just the first time)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-name-repo.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-commit-message.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-export-progress.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-pushed.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-settings.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-settings-branch.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-settings-saved.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-success.png);">
+            <h2>did it work??</h2>
+            <a href="https://ebrelsford.github.io/carto-sidebar/" class="source">source</a>
+        </div>
+
+        <div class="slide">
+            <h2>when you're done you'll have two URLs to keep track of:</h2>
+        </div>
+
+        <div class="slide">
+          <h2>1. the GitHub repo</h2>
+          <pre><code>https://github.com/ebrelsford/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>like the code view in Glitch</h2>
+          <pre><code>https://github.com/ebrelsford/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>this will always be at <em>github.com</em></h2>
+          <pre><code>https://github.com/ebrelsford/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>2. the GitHub Pages site</h2>
+          <pre><code>https://ebrelsford.github.io/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>like the "show" view in Glitch</h2>
+          <pre><code>https://ebrelsford.github.io/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+          <h2>this will always be at <em>github.io</em></h2>
+          <pre><code>https://ebrelsford.github.io/carto-sidebar/</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>likely issues</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-0.png);">
+            <h2>blank page!</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-0.png);">
+            <h2>in developer tools, JS and CSS aren't loading</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-1.png);">
+            <h2>the browser is looking at the wrong URL for styles.css</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-3.png);">
+            <h2>new Glitch projects often get files using <code>/styles.css</code></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-3.png);">
+            <h2><code>/styles.css</code> means "put /styles.css" right after the domain"</h2>
+        </div>
+
+        <div class="slide">
+            <h2>this works fine in Glitch</h2>
+            <pre><code>https://flaxen-bait.glitch.me/styles.css</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>but not in GitHub</h2>
+            <pre><code>https://ebrelsford.github.io/styles.css</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>since the GitHub URL ends with the repo name</h2>
+            <pre><code>https://ebrelsford.github.io/my-map/</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>so you want to load styles this way:</h2>
+            <pre><code>https://ebrelsford.github.io/my-map/styles.css</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-4.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-4.png);">
+            <h2>pretty straightforward fix&mdash;add <code>.</code> before the <code>/</code></h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/likely-issues-4.png);">
+            <h2><code>.</code> means "look in this folder"</h2>
+        </div>
+
+        <div class="slide">
+          <h2>let's look at an <a href="https://glitch.com/edit/#!/rose-six-mantis">example of this</a></h2>
+        </div>
+
+        <div class="slide">
+          <h2>is GitHub worth the effort?</h2>
+        </div>
+
+        <div class="slide">
+          <h2>depends!</h2>
+        </div>
+
+        <div class="slide">
+          <h2>since many tech and tech-adjacent work uses GitHub, it's good to get familiar with it</h2>
+        </div>
+
+        <div class="slide">
+          <h2>it's a bit easier to keep organized than Glitch</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-loading.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-loading.png);">
+          <h2>Glitch puts sites to sleep when they're inactive</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/glitch-loading.png);">
+          <h2>GitHub Pages won't do this</h2>
+        </div>
+
+        <div class="slide">
+          <h2>my recommendation: use Glitch for small experiments, GitHub for projects you want to keep around</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-custom-domain.png);">
+            <a href="https://help.github.com/en/articles/quick-start-setting-up-a-custom-domain" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-custom-domain.png);">
+            <h2>if you want, you can register a domain and point it at GitHub</h2>
+            <a href="https://help.github.com/en/articles/quick-start-setting-up-a-custom-domain" target="_blank" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-repo-custom-domain.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-org-landing.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-org.png);">
+            <h2>or for free,</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-org.png);">
+            <h2>you can make an "organization" in GitHub</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/github-org.png);">
+            <h2>you get <em>organizationname</em>.github.io</h2>
+        </div>
+
+        <div class="slide">
+            <h2>GitHub isn't just for hosting web sites</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-loading.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-loading-github.png);">
+            <a href="https://github.com/ebrelsford/Leaflet.loading/" target="_blank" class="source">Leaflet.loading</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-loading-pr.png);">
+            <a href="https://github.com/ebrelsford/Leaflet.loading/pull/1" target="_blank" class="source">pull request</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/leaflet-loading-contributors.png);">
+            <a href="https://github.com/ebrelsford/Leaflet.loading/graphs/contributors" target="_blank" class="source">contributors</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>other free data visualization tools</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/kepler.png);">
+            <a class="source" href="https://kepler.gl/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/kepler-example.png);">
+            <a class="source" href="https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/s/ma0shw7n9bdq1an/After%20PAUSE.json">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/kepler-share.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/xyz-here.png);">
+            <a class="source" href="https://developer.here.com/products/platform/studio">HERE studio</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/xyz-here-example.png);">
+            <a class="source" href="https://studio.here.com/viewer/?project_id=062db25b-a98b-4071-840b-28c4abefc2c7">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-data-explorer.png);">
+            <a class="source" href="https://labs.mapbox.com/labs/mbxdataexplorer/">Mapbox data explorer</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-data-explorer-join.png);">
+            <a class="source" href="https://labs.mapbox.com/labs/mbxdataexplorer/">Mapbox data explorer</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-data-explorer-example.png);">
+            <a class="source" href="https://labs.mapbox.com/labs/mbxdataexplorer/?view=https://dl.dropboxusercontent.com/s/xbopfnq9su47z02/Saved_Visualization_1586879479040.json?dl=0">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-data-explorer-dropbox.png);">
+            <a class="source" href="https://labs.mapbox.com/labs/mbxdataexplorer/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-scrollytelling.png);">
+            <a class="source" href="https://demos.mapbox.com/scrollytelling/">Mapbox scrollytelling template</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mapbox-scrollytelling-example.png);">
+            <a class="source" href="https://glitch.com/edit/#!/mapbox-scrollytelling">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper.png);">
+            <a class="source" href="https://www.datawrapper.de/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-thecity.png);">
+            <a class="source" href="https://thecity.nyc/2020/02/manhattan-boards-missing-hispanics-young-people-and-renters.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-thecity-garbage.png);">
+            <a class="source" href="https://thecity.nyc/2020/04/garbage-pickups-tell-tale-of-two-cities-as-manhattan-shrinks.html">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-example.png);">
+            <a class="source" href="https://glitch.com/edit/#!/tidy-bevel-guide">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-process-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-process-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-process-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/datawrapper-process-3.png);">
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+    </body>
+</html>
